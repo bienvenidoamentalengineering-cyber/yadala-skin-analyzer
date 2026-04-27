@@ -614,6 +614,7 @@ const questions = [
 let current = 0;
 let answers = {};
 let selectedOption = null;
+let currentLinea = null;
 
 function renderQuestion() {
   const q = questions[current];
@@ -792,6 +793,7 @@ function getFallbackResult(linea) {
 
 function showResult(result) {
   document.getElementById('analyzingSection').classList.remove('active');
+  currentLinea = result.linea;
 
   const linea = result.linea;
   const colorClass = linea.toLowerCase();
@@ -859,23 +861,73 @@ function showResult(result) {
   document.getElementById('progressText').textContent = 'Análisis completado';
 }
 
-function submitEmail() {
+const SUPABASE_URL = 'https://qbvltetexymyrvscbbai.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFidmx0ZXRleHlteXJ2c2NiYmFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3OTA2MjAsImV4cCI6MjA5MDM2NjYyMH0.8OqR2ezdShKFmAVl46Yj6LbBOFNuo_EmhHfy2Pc7dmE';
+
+async function submitEmail() {
   const email = document.getElementById('emailInput').value;
   if (!email || !email.includes('@')) {
     document.getElementById('emailInput').style.borderColor = '#c0392b';
     return;
   }
-  document.getElementById('emailInput').style.borderColor = 'var(--prevent)';
-  document.querySelector('.btn-cta').textContent = '✓ Enviado';
-  document.querySelector('.btn-cta').style.background = 'var(--prevent)';
-  // Aquí conectarías con tu sistema de email (Resend, Mailchimp, Supabase)
-  console.log('Lead capturado:', email, answers);
+
+  const btn = document.querySelector('.btn-cta');
+  btn.textContent = 'Guardando...';
+  btn.disabled = true;
+
+  try {
+    // Guardar en quiz_leads
+    await fetch(`${SUPABASE_URL}/rest/v1/quiz_leads`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        email: email,
+        linea: currentLinea
+      })
+    });
+
+    // Guardar análisis completo en skin_analyses
+    await fetch(`${SUPABASE_URL}/rest/v1/skin_analyses`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        email: email,
+        edad: answers.edad,
+        preocupacion: answers.preocupacion,
+        estilo: answers.estilo,
+        cosmetica: answers.cosmetica,
+        objetivo: answers.objetivo,
+        linea: currentLinea,
+        fuente: 'web-quiz'
+      })
+    });
+
+    document.getElementById('emailInput').style.borderColor = 'var(--prevent)';
+    btn.textContent = '✓ Enviado';
+    btn.style.background = 'var(--prevent)';
+
+  } catch(e) {
+    btn.textContent = 'Quiero mi guía';
+    btn.disabled = false;
+    console.error('Error guardando en Supabase:', e);
+  }
 }
 
 function restartQuiz() {
   current = 0;
   answers = {};
   selectedOption = null;
+  currentLinea = null;
   document.getElementById('resultSection').classList.remove('active');
   document.getElementById('resultSection').innerHTML = '';
   document.getElementById('quizSection').style.display = 'block';
