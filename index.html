@@ -704,8 +704,66 @@ function determineLineLocally(answers) {
   return Object.entries(score).sort((a,b) => b[1]-a[1])[0][0];
 }
 
+function detectarPerfilEmocional(answers) {
+  let estado = 'curiosa';
+  let urgencia = 'media';
+  let agente_circa = 'identidad';
+
+  // Detección estado emocional
+  // Frustrada: siente que algo cambió + pide estructura/firmeza + busca resultados
+  if (
+    (answers.edad === '30-45' || answers.edad === '45+') &&
+    (answers.preocupacion === 'flacidez' || answers.preocupacion === 'firmeza') &&
+    (answers.cosmetica === 'resultados' || answers.cosmetica === 'alternativa')
+  ) {
+    estado = 'frustrada';
+    urgencia = 'alta';
+    agente_circa = 'regulador';
+  }
+  // Resignada: piel tiene historia + pérdida de densidad + ha probado cosas
+  else if (
+    answers.edad === '45+' &&
+    answers.preocupacion === 'flacidez' &&
+    answers.cosmetica === 'alternativa'
+  ) {
+    estado = 'resignada';
+    urgencia = 'media';
+    agente_circa = 'identidad';
+  }
+  // Decidida: busca resultados directamente
+  else if (
+    answers.cosmetica === 'resultados' ||
+    answers.objetivo === 'energia' ||
+    answers.objetivo === 'estructura'
+  ) {
+    estado = 'decidida';
+    urgencia = 'alta';
+    agente_circa = 'accion';
+  }
+  // Curiosa: preventiva, primer paso, ritual
+  else if (
+    answers.preocupacion === 'prevencion' ||
+    answers.cosmetica === 'primero' ||
+    answers.objetivo === 'ritual'
+  ) {
+    estado = 'curiosa';
+    urgencia = 'baja';
+    agente_circa = 'identidad';
+  }
+  // Activa pero agotada
+  else if (answers.estilo === 'activa' || answers.estilo === 'estres') {
+    estado = 'frustrada';
+    urgencia = 'media';
+    agente_circa = 'regulador';
+  }
+
+  return { estado_emocional: estado, urgencia: urgencia, agente_circa: agente_circa };
+}
+
+
 async function getRecommendation() {
   const linea = determineLineLocally(answers);
+  window.perfilEmocional = detectarPerfilEmocional(answers);
 
   const prompt = `Eres la voz de YADALA — cosmética ancestral española, 4 generaciones, fundada por Pedro Jordà en Lanzarote. Mascarilla facial de bioestimulación natural. 55 minutos. Sin agujas. Sin cirugía. Sin parálisis.
 
@@ -906,7 +964,10 @@ async function submitEmail() {
       },
       body: JSON.stringify({
         email: email,
-        linea: currentLinea
+        linea: currentLinea,
+        estado_emocional: window.perfilEmocional ? window.perfilEmocional.estado_emocional : 'curiosa',
+        urgencia: window.perfilEmocional ? window.perfilEmocional.urgencia : 'media',
+        agente_circa: window.perfilEmocional ? window.perfilEmocional.agente_circa : 'identidad'
       })
     });
 
