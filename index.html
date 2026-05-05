@@ -544,8 +544,8 @@
   <!-- ANALIZANDO -->
   <div class="analyzing" id="analyzingSection">
     <div class="pulse-ring"></div>
-    <div class="analyzing-text">Analizando tu piel<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
-    <div class="analyzing-sub">Creando tu protocolo personalizado</div>
+    <div class="analyzing-text">Escuchando lo que tu piel dice<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+    <div class="analyzing-sub">Preparando tu ritual personalizado</div>
   </div>
 
   <!-- RESULTADO -->
@@ -708,17 +708,29 @@ function determineLineLocally(answers) {
 async function getRecommendation() {
   const linea = determineLineLocally(answers);
 
-  const prompt = `Eres el YADALASKIN Analyzer de YADALA, una cosmética ancestral española fundada por Pedro Jordà (Lanzarote).
+  const prompt = `Eres la voz de YADALA — cosmética ancestral española, 4 generaciones, fundada por Pedro Jordà en Lanzarote. Bioestimulación natural. 55 minutos. Sin agujas. Sin cirugía. Sin parálisis.
 
-YADALA es una mascarilla facial de 4 generaciones que actúa mediante bioestimulación natural: activa fibroblastos, tonifica músculos faciales y oxigena tejidos profundos. Sin agujas, sin cirugía, sin paralización.
+VOZ YADALA:
+- Empieza por lo que la persona ya siente, nunca por el producto
+- Frases cortas. Sensorial. Conecta piel con vida real.
+- PROHIBIDO: milagroso, antiedad agresivo, urgencia artificial
+- Sensorialidad: "cara despierta", "piel que respira", "rostro con vida", "firme al tacto"
 
-Las 3 líneas:
-- PREVENT (20–30): piel joven, prevención, luminosidad, glow natural
-- RECOVER (30–45): recuperar firmeza, contorno, energía facial
-- RECLAIM (45+): lifting natural, estructura, expresión preservada
+MODELO CIRCA:
+1. CO-REGULACIÓN (frase_apertura): valida cómo se siente ANTES de hablar del producto
+2. IDENTIDAD (diagnostico): conecta con quién es ella — PREVENT=La que despierta / RECOVER=La que reconecta / RECLAIM=La que se reafirma
+3. RITUAL (por_que_tu_linea): introduce Yadala como invitación, no como solución
+4. CONFIRMACIÓN (beneficios): concreto y sensorial
+5. AUTONOMÍA (mensaje_final): algo que ella ya sabe, que le pertenece
 
-Respuestas del usuario:
-- Edad: ${answers.estado}
+INGREDIENTES — en plural, nunca en singular:
+- "los compuestos botánicos antioxidantes" — activan, protegen, afina
+- "los minerales equilibrantes naturales" — reequilibran, purifican
+- "las sales minerales ancestrales" — toniifican, sellan, reparan
+- PROHIBIDO: "la mascarilla", mencionar A/B/C, inventar productos
+
+RESPUESTAS DEL ANÁLISIS:
+- Estado emocional declarado: ${answers.estado === 'prevent' ? 'quiere activar antes de que su piel le pida algo — arquetipo La que despierta' : answers.estado === 'recover' ? 'algo ha cambiado y ya no se reconoce del todo — arquetipo La que reconecta' : 'ha dejado de buscar volver atrás, quiere verse viva hoy — arquetipo La que se reafirma'}
 - Zona de preocupación principal: ${answers.preocupacion === 'nasogeniano' ? 'surcos nasogenianos / pliegues de la sonrisa' : answers.preocupacion === 'comisuras' ? 'comisuras caídas / cara triste en reposo' : answers.preocupacion === 'ovalo' ? 'óvalo perdido / mandíbula desdibujada' : answers.preocupacion === 'poros' ? 'poros y puntos negros / exceso de sebo' : 'prevención consciente'}
 - Estilo de vida: ${answers.estilo}
 - Relación con cosmética: ${answers.cosmetica}
@@ -763,27 +775,27 @@ function getFallbackResult(linea) {
   const data = {
     PREVENT: {
       linea: 'PREVENT',
-      frase_apertura: 'Tu piel está en su momento más receptivo, y lo que hagas ahora marcará cómo se verá en los próximos 10 años.',
-      diagnostico: 'Tu piel joven tiene toda la energía para brillar, pero el estrés digital y el ritmo de vida moderno la van apagando antes de tiempo. Los fibroblastos aún están activos, solo necesitan ser despertados con el estímulo correcto.',
-      por_que_tu_linea: 'Yadala Prevent fue creada para pieles que quieren mantenerse vivas, firmes y luminosas sin esperar a que aparezca un problema. Es prevención consciente, no antiedad agresiva.',
+      frase_apertura: 'Tu piel está viva y receptiva. Lo que actives hoy, lo sentirás durante años.',
+      diagnostico: 'El ritmo que llevas va apagando la energía natural de tu piel antes de tiempo. No es deterioro. Es acumulación de ruido que tu piel no sabe cómo soltar sola.',
+      por_que_tu_linea: 'Yadala activa tu piel desde dentro usando los compuestos botánicos antioxidantes y los minerales equilibrantes naturales. No tienes que corregir lo que puedes preservar.',
       beneficios: ['Glow inmediato desde la primera aplicación', 'Poros más cerrados y textura uniforme', 'Piel tonificada y llena de energía natural', 'Hábito de autocuidado que tu piel agradecerá en 10 años'],
       protocolo: 'Aplica Yadala Prevent 1 vez por semana como ritual de domingo. 55 minutos con la mascarilla, retirada con agua tibia y fría. La primera semana notarás luminosidad inmediata; en un mes, firmeza visible.',
       mensaje_final: '"Activa hoy lo que tu piel agradecerá mañana."'
     },
     RECOVER: {
       linea: 'RECOVER',
-      frase_apertura: 'Tu piel no está perdida, está esperando que la reactives. Y ese momento es ahora.',
-      diagnostico: 'Entre los 30 y 45 años, los fibroblastos empiezan a ralentizarse y los músculos faciales pierden tono. No es envejecimiento, es un proceso biológico que Yadala puede revertir de forma natural.',
-      por_que_tu_linea: 'Yadala Recover estimula exactamente lo que tu piel necesita ahora: reactivar la producción de colágeno y recuperar el tono muscular facial sin procedimientos invasivos.',
+      frase_apertura: 'Tu piel no está perdida. Solo ha dejado de activarse. Y eso tiene solución.',
+      diagnostico: 'Lo que describes no es envejecimiento. Es acumulación de estrés y ritmo. Tu piel tiene memoria — y cuando recibe la señal correcta, recuerda cómo responder.',
+      por_que_tu_linea: 'Yadala reactiva los fibroblastos y devuelve tono al tejido facial usando la sinergia de compuestos botánicos y sales minerales ancestrales. Sin forzar. Sin paralizar.',
       beneficios: ['Contorno facial más definido y firme', 'Arrugas de expresión atenuadas', 'Piel uniforme, radiante y descansada', 'Alternativa real al bótox que preserva tu expresión'],
       protocolo: 'Usa Yadala Recover 1 vez por semana. 55 minutos de actuación. La primera sesión notarás el "efecto despertar": tu piel se ve más firme y luminosa. En 4 semanas, los cambios son visibles para todos.',
       mensaje_final: '"Tu piel volvió a contar tu historia con luz, no con cansancio."'
     },
     RECLAIM: {
       linea: 'RECLAIM',
-      frase_apertura: 'Tu rostro tiene historia, carácter y presencia. Merece brillo y estructura, no parálisis.',
-      diagnostico: 'La piel madura ha perdido densidad, volumen y tono muscular a lo largo de los años. Pero los fibroblastos nunca mueren, solo duermen. Yadala los despierta y reactiva el sistema de soporte natural de tu rostro.',
-      por_que_tu_linea: 'Yadala Reclaim ofrece un efecto lifting biológico: redefine contornos, recupera volumen y devuelve estructura sin tocar tu expresión ni congelar tus gestos.',
+      frase_apertura: 'Tu piel tiene historia. Y merece seguir contándola con fuerza, no con silencio.',
+      diagnostico: 'No es rendirse. Es querer volver a reconocerte. Tu piel no ha perdido capacidad de regenerarse — ha perdido el estímulo que la activa. Los fibroblastos no mueren, esperan.',
+      por_que_tu_linea: 'Yadala reactiva el tejido profundo y devuelve estructura sin tocar tu expresión. Las sales minerales ancestrales y los compuestos botánicos trabajan juntos. No quieres parecer otra. Quieres verte como tú.',
       beneficios: ['Reducción visible de flacidez en mejillas y óvalo', 'Efecto lifting natural sin cirugía ni agujas', 'Piel más densa, menos fina y quebradiza', 'Expresión preservada: tú, en tu mejor versión'],
       protocolo: 'Aplica Yadala Reclaim 1–2 veces por semana. 55 minutos de ritual profundo. La primera semana notarás que tu piel "respira" diferente. A las 4 semanas, el lifting natural es visible y duradero.',
       mensaje_final: '"No quiero parecer otra. Quiero verme como yo, en mi mejor versión."'
@@ -836,13 +848,13 @@ function showResult(result) {
     </div>
 
     <div class="cta-section">
-      <div class="cta-title">Recibe tu protocolo completo</div>
+      <div class="cta-title">Tu ritual te espera</div>
       <p class="cta-sub">Déjame tu email y te envío la guía completa de Yadala ${lineNames[linea]}<br>+ 10% de descuento en tu primer pedido.</p>
       <div class="email-wrap">
         <input type="email" class="email-input" id="emailInput" placeholder="tu@email.com">
         <button class="btn-cta" onclick="submitEmail()">Quiero mi guía</button>
       </div>
-      <p class="privacy-note">Sin spam. Solo tu protocolo personalizado. Puedes darte de baja cuando quieras.</p>
+      <p class="privacy-note">Sin spam. Solo lo que tu piel necesita. Puedes darte de baja cuando quieras.</p>
       <div style="margin-top:2rem;padding:1.5rem;background:rgba(196,168,130,0.08);border-left:2px solid var(--earth);border-radius:1px">
         <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--bark);line-height:1.6">${result.mensaje_final}</p>
         <p style="font-size:0.72rem;letter-spacing:0.1em;color:var(--earth);margin-top:0.5rem;opacity:0.7">— Pedro Jordà · Fundador YADALA · 4 generaciones</p>
@@ -888,7 +900,10 @@ async function submitEmail() {
       },
       body: JSON.stringify({
         email: email,
-        linea: currentLinea
+        linea: currentLinea,
+        estado_emocional: window.perfilEmocional ? window.perfilEmocional.estado_emocional : 'curiosa',
+        urgencia: window.perfilEmocional ? window.perfilEmocional.urgencia : 'media',
+        agente_circa: window.perfilEmocional ? window.perfilEmocional.agente_circa : 'identidad'
       })
     });
 
