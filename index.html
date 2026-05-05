@@ -544,8 +544,8 @@
   <!-- ANALIZANDO -->
   <div class="analyzing" id="analyzingSection">
     <div class="pulse-ring"></div>
-    <div class="analyzing-text">Escuchando lo que tu piel dice<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
-    <div class="analyzing-sub">Preparando tu ritual personalizado</div>
+    <div class="analyzing-text">Analizando tu piel<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+    <div class="analyzing-sub">Creando tu protocolo personalizado</div>
   </div>
 
   <!-- RESULTADO -->
@@ -556,57 +556,58 @@
 <script>
 const questions = [
   {
-    id: 'edad',
-    number: 'Un momento — Tu piel',
-    text: '¿Cómo sientes tu piel cuando te miras al espejo por la mañana?',
+    id: 'estado',
+    number: 'Un momento — Tu piel hoy',
+    text: '¿Cómo describes tu relación con tu piel ahora mismo?',
     options: [
-      { text: 'Fresca y viva, pero quiero mantenerla así', sub: 'Me cuido hoy para no tener que corregir mañana', value: '20-30' },
-      { text: 'Noto que algo ha cambiado y quiero recuperarlo', sub: 'No es urgencia, es querer volver a reconocerme', value: '30-45' },
-      { text: 'Mi piel tiene historia y quiero que tenga fuerza', sub: 'Presencia real, sin perder mi expresión', value: '45+' }
+      { text: 'Está bien... pero siento que podría estar más viva', sub: 'Quiero activarla antes de que me pida algo', value: 'prevent' },
+      { text: 'Algo ha cambiado y ya no me reconozco del todo', sub: 'No es drama, pero algo no encaja como antes', value: 'recover' },
+      { text: 'He dejado de buscar volver atrás. Quiero verme viva hoy', sub: 'No quiero corregir. Quiero habitar mi piel como es', value: 'reclaim' }
     ]
   },
   {
     id: 'preocupacion',
     number: 'Escúchala — Lo que tu piel pide',
-    text: '¿Qué es lo que tu piel te está pidiendo ahora mismo?',
+    text: '¿Qué es lo que más reconoces en tu piel ahora mismo?',
     options: [
-      { text: 'Más luz. Más vida. Menos grisura', sub: 'Piel apagada que ya no refleja cómo me siento', value: 'luminosidad' },
-      { text: 'Volver a sentirla firme y definida', sub: 'El contorno que era mío y está dejando de serlo', value: 'firmeza' },
-      { text: 'Estructura. Presencia. Que vuelva a sujetarse', sub: 'Pérdida de densidad que ya no puedo ignorar', value: 'flacidez' },
+      { text: 'Las líneas de la sonrisa ya no desaparecen cuando dejo de sonreír', sub: 'Con luz lateral se me ven unos surcos que antes no estaban', value: 'nasogeniano' },
+      { text: 'Parezco triste aunque esté bien. Mi boca tira hacia abajo', sub: 'Las comisuras han bajado y mi cara en reposo ya no es la mía', value: 'comisuras' },
+      { text: 'El óvalo ya no está donde era, todo parece que cae', sub: 'La mandíbula que era mía ya no se define igual', value: 'ovalo' },
+      { text: 'Los puntos negros de la nariz siempre están ahí', sub: 'He probado de todo y a los dos días vuelven', value: 'poros' },
       { text: 'Cuidarla antes de que me pida algo', sub: 'Prevención consciente, no reacción tardía', value: 'prevencion' }
     ]
   },
   {
     id: 'estilo',
-    number: 'Tu ritmo — Cómo vive tu cuerpo',
-    text: '¿Cómo vive tu cuerpo el ritmo que llevas?',
+    number: 'Pregunta 3 — Tu ritmo de vida',
+    text: '¿Cómo describirías tu relación con el estrés y el descanso?',
     options: [
-      { text: 'Con estrés constante. Mi piel lo siente', sub: 'Pantallas, poco sueño, ritmo que no para', value: 'estres' },
-      { text: 'Con equilibrio. Me cuido aunque sea difícil', sub: 'Bienestar como prioridad, no como lujo', value: 'equilibrio' },
-      { text: 'Con energía alta pero sin descanso suficiente', sub: 'Activa por fuera, agotada por dentro', value: 'activa' },
-      { text: 'Con calma. Busco lo natural en todo', sub: 'Ritmo lento, decisiones conscientes', value: 'tranquilo' }
+      { text: 'Alto estrés, poco tiempo para mí', sub: 'Pantallas, ritmo urbano, dormir poco', value: 'estres' },
+      { text: 'Equilibrado, cuido mis rutinas', sub: 'Me preocupo por el bienestar aunque sea ocupada', value: 'equilibrio' },
+      { text: 'Activa pero sin descanso suficiente', sub: 'Energía alta, pero mi piel lo nota', value: 'activa' },
+      { text: 'Tranquilo, priorizo el bienestar', sub: 'Busco lo natural y consciente en todo', value: 'tranquilo' }
     ]
   },
   {
     id: 'cosmetica',
-    number: 'Tu decisión — Lo que buscas',
-    text: '¿Qué buscas realmente cuando cuidas tu piel?',
+    number: 'Pregunta 4 — Tu relación con los tratamientos',
+    text: '¿Cuál es tu posición frente a los tratamientos estéticos?',
     options: [
-      { text: 'Activarla desde dentro. Sin forzarla', sub: 'Sin agujas, sin intervenciones, sin artificios', value: 'natural' },
-      { text: 'Una alternativa real a lo que no me convenció', sub: 'Resultados sin depender de procedimientos', value: 'alternativa' },
-      { text: 'Resultados visibles. El método me importa menos', sub: 'Lo que funcione, que funcione', value: 'resultados' },
-      { text: 'Empezar. Este sería mi primer paso consciente', sub: 'Nunca he hecho algo así y quiero comenzar bien', value: 'primero' }
+      { text: 'Solo soluciones naturales, siempre', sub: 'Sin agujas, sin intervenciones, sin artificios', value: 'natural' },
+      { text: 'He probado algo pero busco alternativa más natural', sub: 'Quiero resultados sin depender de clínicas', value: 'alternativa' },
+      { text: 'No me importa el método, quiero resultados reales', sub: 'Lo que funcione, funcione', value: 'resultados' },
+      { text: 'Nunca he hecho nada especial', sub: 'Este sería mi primer paso consciente', value: 'primero' }
     ]
   },
   {
     id: 'objetivo',
-    number: 'Tu piel habla — Escúchala',
-    text: 'Si tu piel pudiera hablarte, ¿qué te diría?',
+    number: 'Pregunta 5 — Lo que deseas',
+    text: 'Si tu piel pudiera darte algo mañana por la mañana, ¿qué sería?',
     options: [
-      { text: '"Actívame. Tengo más luz de la que muestro"', sub: 'Glow real, sin maquillaje, sin filtros', value: 'luminosa' },
-      { text: '"Recuérdame cómo era cuando estaba despierta"', sub: 'Firmeza, energía, presencia recuperada', value: 'energia' },
-      { text: '"Dame estructura. Quiero volver a sujetarme"', sub: 'Contorno definido, sin perder expresión', value: 'estructura' },
-      { text: '"Cuídame como merece algo vivo"', sub: 'Un ritual que conecte cuerpo, piel y alma', value: 'ritual' }
+      { text: 'Verme fresca, luminosa y natural sin maquillaje', sub: 'Piel viva que habla por sí sola', value: 'luminosa' },
+      { text: 'Recuperar la energía y firmeza que tenía', sub: 'Mi piel, pero en su mejor versión', value: 'energia' },
+      { text: 'Sentir que tengo estructura y presencia de nuevo', sub: 'Rostro definido, sin intervenciones', value: 'estructura' },
+      { text: 'Simplemente sentir que me cuido de verdad', sub: 'Un ritual que conecte cuerpo y alma', value: 'ritual' }
     ]
   }
 ];
@@ -689,13 +690,13 @@ function determineLineLocally(answers) {
   // Lógica local como fallback
   let score = { PREVENT: 0, RECOVER: 0, RECLAIM: 0 };
 
-  if (answers.edad === '20-30') score.PREVENT += 3;
-  if (answers.edad === '30-45') score.RECOVER += 3;
-  if (answers.edad === '45+') score.RECLAIM += 3;
+  if (answers.estado === 'prevent') score.PREVENT += 3;
+  if (answers.estado === 'recover') score.RECOVER += 3;
+  if (answers.estado === 'reclaim') score.RECLAIM += 3;
 
-  if (answers.preocupacion === 'luminosidad' || answers.preocupacion === 'prevencion') score.PREVENT += 2;
-  if (answers.preocupacion === 'firmeza') score.RECOVER += 2;
-  if (answers.preocupacion === 'flacidez') score.RECLAIM += 2;
+  if (answers.preocupacion === 'prevencion' || answers.preocupacion === 'poros') score.PREVENT += 2;
+  if (answers.preocupacion === 'nasogeniano' || answers.preocupacion === 'comisuras') score.RECOVER += 2;
+  if (answers.preocupacion === 'ovalo') score.RECLAIM += 2;
 
   if (answers.objetivo === 'luminosa' || answers.objetivo === 'ritual') score.PREVENT += 1;
   if (answers.objetivo === 'energia') score.RECOVER += 1;
@@ -704,113 +705,36 @@ function determineLineLocally(answers) {
   return Object.entries(score).sort((a,b) => b[1]-a[1])[0][0];
 }
 
-function detectarPerfilEmocional(answers) {
-  let estado = 'curiosa';
-  let urgencia = 'media';
-  let agente_circa = 'identidad';
-
-  // Detección estado emocional
-  // Frustrada: siente que algo cambió + pide estructura/firmeza + busca resultados
-  if (
-    (answers.edad === '30-45' || answers.edad === '45+') &&
-    (answers.preocupacion === 'flacidez' || answers.preocupacion === 'firmeza') &&
-    (answers.cosmetica === 'resultados' || answers.cosmetica === 'alternativa')
-  ) {
-    estado = 'frustrada';
-    urgencia = 'alta';
-    agente_circa = 'regulador';
-  }
-  // Resignada: piel tiene historia + pérdida de densidad + ha probado cosas
-  else if (
-    answers.edad === '45+' &&
-    answers.preocupacion === 'flacidez' &&
-    answers.cosmetica === 'alternativa'
-  ) {
-    estado = 'resignada';
-    urgencia = 'media';
-    agente_circa = 'identidad';
-  }
-  // Decidida: busca resultados directamente
-  else if (
-    answers.cosmetica === 'resultados' ||
-    answers.objetivo === 'energia' ||
-    answers.objetivo === 'estructura'
-  ) {
-    estado = 'decidida';
-    urgencia = 'alta';
-    agente_circa = 'accion';
-  }
-  // Curiosa: preventiva, primer paso, ritual
-  else if (
-    answers.preocupacion === 'prevencion' ||
-    answers.cosmetica === 'primero' ||
-    answers.objetivo === 'ritual'
-  ) {
-    estado = 'curiosa';
-    urgencia = 'baja';
-    agente_circa = 'identidad';
-  }
-  // Activa pero agotada
-  else if (answers.estilo === 'activa' || answers.estilo === 'estres') {
-    estado = 'frustrada';
-    urgencia = 'media';
-    agente_circa = 'regulador';
-  }
-
-  return { estado_emocional: estado, urgencia: urgencia, agente_circa: agente_circa };
-}
-
-
 async function getRecommendation() {
   const linea = determineLineLocally(answers);
-  window.perfilEmocional = detectarPerfilEmocional(answers);
 
-  const prompt = `Eres la voz de YADALA — cosmética ancestral española, 4 generaciones, fundada por Pedro Jordà en Lanzarote. Mascarilla facial de bioestimulación natural. 55 minutos. Sin agujas. Sin cirugía. Sin parálisis.
+  const prompt = `Eres el YADALASKIN Analyzer de YADALA, una cosmética ancestral española fundada por Pedro Jordà (Lanzarote).
 
-VOZ YADALA — REGLAS ABSOLUTAS:
-- Empieza siempre por lo que la persona ya siente, no por el producto
-- Frases cortas. Ritmo visual. Saltos de línea entre ideas.
-- Nunca corrijas, acompaña
-- Conecta piel con vida real siempre
-- Sensorialidad obligatoria: usa "cara despierta", "piel que respira", "rostro con vida", "firme al tacto"
-- PROHIBIDO: milagroso, antiedad agresivo, energía cuántica, vibración, urgencia artificial
-- PALABRAS QUE USAS: activar, responder, ritmo, piel viva, cara despierta, estructura, presencia
+YADALA es una mascarilla facial de 4 generaciones que actúa mediante bioestimulación natural: activa fibroblastos, tonifica músculos faciales y oxigena tejidos profundos. Sin agujas, sin cirugía, sin paralización.
 
-MODELO CIRCA — APLICA EN ESTE ORDEN:
-1. CO-REGULACIÓN (frase_apertura): valida cómo se siente ANTES de cualquier recomendación
-2. IDENTIDAD (diagnostico): conecta con quién es ella, no solo con su problema
-3. RITUAL (por_que_tu_linea + protocolo): introduce Yadala como invitación, no como solución
-4. CONFIRMACIÓN (beneficios): nombra lo que va a notar, concreto y sensorial
-5. AUTONOMÍA (mensaje_final): termina con algo que ella ya sabe, que le pertenece
+Las 3 líneas:
+- PREVENT (20–30): piel joven, prevención, luminosidad, glow natural
+- RECOVER (30–45): recuperar firmeza, contorno, energía facial
+- RECLAIM (45+): lifting natural, estructura, expresión preservada
 
-INGREDIENTES — NOMBRES FUNCIONALES OBLIGATORIOS:
-- Emocional: "Complejo botánico antioxidante", "Sal mineral ancestral", "Mineral equilibrante natural"
-- Técnico suave: "Extractos ricos en polifenoles", "Cristal mineral natural"
-- Sinergia: "Fórmula bioactiva de triple origen natural"
+Respuestas del usuario:
+- Edad: ${answers.estado}
+- Zona de preocupación principal: ${answers.preocupacion === 'nasogeniano' ? 'surcos nasogenianos / pliegues de la sonrisa' : answers.preocupacion === 'comisuras' ? 'comisuras caídas / cara triste en reposo' : answers.preocupacion === 'ovalo' ? 'óvalo perdido / mandíbula desdibujada' : answers.preocupacion === 'poros' ? 'poros y puntos negros / exceso de sebo' : 'prevención consciente'}
+- Estilo de vida: ${answers.estilo}
+- Relación con cosmética: ${answers.cosmetica}
+- Objetivo emocional: ${answers.objetivo}
 
-LAS 3 LÍNEAS:
-- PREVENT (20-30): "Tu piel aún está bien... pero puede estar mejor." Identidad: soy alguien que se adelanta.
-- RECOVER (30-45): "Tu piel no está perdida. Solo ha dejado de activarse." Identidad: soy alguien que puede recuperarse.
-- RECLAIM (45+): "No quieres parecer otra. Quieres verte como tú." Identidad: soy alguien que se reconstruye.
-
-RESPUESTAS DEL ANÁLISIS:
-- Cómo siente su piel: ${answers.edad}
-- Lo que su piel le pide: ${answers.preocupacion}
-- Cómo vive su cuerpo: ${answers.estilo}
-- Lo que busca realmente: ${answers.cosmetica}
-- Lo que su piel le diría: ${answers.objetivo}
-
-LÍNEA RECOMENDADA: ${linea}
+Línea recomendada: ${linea}
 
 Genera una respuesta en JSON con exactamente esta estructura (sin markdown, solo JSON puro):
 {
   "linea": "${linea}",
-  "frase_apertura": "1-2 frases que validen cómo se siente. Empieza por su realidad, no por el producto. Voz Yadala pura. Sensorial.",
-  "diagnostico": "2-3 frases sobre qué está pasando en su piel. Conecta piel con vida real. Sin tecnicismos. Tono cálido.",
-  "por_que_tu_linea": "2 frases. Por qué esta línea es perfecta para ella. Usa nombres funcionales de ingredientes de forma natural.",
-  "beneficios": ["beneficio sensorial concreto 1", "beneficio sensorial concreto 2", "beneficio sensorial concreto 3", "beneficio emocional 4"],
-  "protocolo": "El ritual en 2-3 frases. Cuándo, cómo, qué esperar. Usa la palabra ritual.",
-  "mensaje_final": "Frase corta que conecte piel y alma. Máximo 20 palabras. ADN Yadala puro."
+  "frase_apertura": "frase personal y empática de 1-2 líneas que valide cómo se siente (empieza con 'Tu piel...' o similar)",
+  "diagnostico": "2-3 frases explicando qué está pasando en su piel según sus respuestas, tono cálido y experto",
+  "por_que_tu_linea": "2 frases explicando por qué ${linea} es perfecta para ella, mencionando su caso específico",
+  "beneficios": ["beneficio concreto 1", "beneficio concreto 2", "beneficio concreto 3", "beneficio concreto 4"],
+  "protocolo": "Descripción del protocolo de uso en 2-3 frases: cuándo aplicar, cómo, qué esperar la primera semana",
+  "mensaje_final": "Frase inspiradora corta que conecte piel y alma, estilo de la marca (no más de 20 palabras)"
 }`;
 
   try {
@@ -839,27 +763,27 @@ function getFallbackResult(linea) {
   const data = {
     PREVENT: {
       linea: 'PREVENT',
-      frase_apertura: 'Tu piel está viva y receptiva. Lo que actives hoy, lo sentirás durante años.',
-      diagnostico: 'El ritmo que llevas — pantallas, estrés, poco tiempo para ti — va apagando la energía natural de tu piel antes de tiempo. No es deterioro. Es acumulación de ruido que tu piel no sabe cómo soltar sola.',
-      por_que_tu_linea: 'Yadala Prevent activa tu piel desde dentro usando el complejo botánico antioxidante y el mineral equilibrante natural. No tienes que corregir lo que puedes preservar.',
+      frase_apertura: 'Tu piel está en su momento más receptivo, y lo que hagas ahora marcará cómo se verá en los próximos 10 años.',
+      diagnostico: 'Tu piel joven tiene toda la energía para brillar, pero el estrés digital y el ritmo de vida moderno la van apagando antes de tiempo. Los fibroblastos aún están activos, solo necesitan ser despertados con el estímulo correcto.',
+      por_que_tu_linea: 'Yadala Prevent fue creada para pieles que quieren mantenerse vivas, firmes y luminosas sin esperar a que aparezca un problema. Es prevención consciente, no antiedad agresiva.',
       beneficios: ['Glow inmediato desde la primera aplicación', 'Poros más cerrados y textura uniforme', 'Piel tonificada y llena de energía natural', 'Hábito de autocuidado que tu piel agradecerá en 10 años'],
       protocolo: 'Aplica Yadala Prevent 1 vez por semana como ritual de domingo. 55 minutos con la mascarilla, retirada con agua tibia y fría. La primera semana notarás luminosidad inmediata; en un mes, firmeza visible.',
       mensaje_final: '"Activa hoy lo que tu piel agradecerá mañana."'
     },
     RECOVER: {
       linea: 'RECOVER',
-      frase_apertura: 'Tu piel no está perdida. Solo ha dejado de activarse. Y eso tiene solución.',
-      diagnostico: 'Lo que describes no es envejecimiento. Es acumulación de estrés, ritmo y poco tiempo para ti. Tu piel tiene memoria — y cuando recibe la señal correcta, recuerda cómo responder.',
-      por_que_tu_linea: 'Yadala Recover usa la fórmula bioactiva de triple origen natural para reactivar los fibroblastos y devolver tono al tejido facial. Sin forzar. Sin paralizar. Tu expresión, pero elevada.',
+      frase_apertura: 'Tu piel no está perdida, está esperando que la reactives. Y ese momento es ahora.',
+      diagnostico: 'Entre los 30 y 45 años, los fibroblastos empiezan a ralentizarse y los músculos faciales pierden tono. No es envejecimiento, es un proceso biológico que Yadala puede revertir de forma natural.',
+      por_que_tu_linea: 'Yadala Recover estimula exactamente lo que tu piel necesita ahora: reactivar la producción de colágeno y recuperar el tono muscular facial sin procedimientos invasivos.',
       beneficios: ['Contorno facial más definido y firme', 'Arrugas de expresión atenuadas', 'Piel uniforme, radiante y descansada', 'Alternativa real al bótox que preserva tu expresión'],
       protocolo: 'Usa Yadala Recover 1 vez por semana. 55 minutos de actuación. La primera sesión notarás el "efecto despertar": tu piel se ve más firme y luminosa. En 4 semanas, los cambios son visibles para todos.',
       mensaje_final: '"Tu piel volvió a contar tu historia con luz, no con cansancio."'
     },
     RECLAIM: {
       linea: 'RECLAIM',
-      frase_apertura: 'Tu piel tiene historia. Y merece seguir contándola con fuerza, no con silencio.',
-      diagnostico: 'Lo que sientes no es rendirse. Es querer volver a reconocerte. Tu piel madura no ha perdido capacidad de regenerarse — ha perdido el estímulo que la activa. Los fibroblastos no mueren, esperan.',
-      por_que_tu_linea: 'Yadala Reclaim activa la fórmula bioactiva de triple origen natural para reactivar el tejido profundo y devolver estructura sin tocar tu expresión. No quieres parecer otra. Quieres verte como tú.',
+      frase_apertura: 'Tu rostro tiene historia, carácter y presencia. Merece brillo y estructura, no parálisis.',
+      diagnostico: 'La piel madura ha perdido densidad, volumen y tono muscular a lo largo de los años. Pero los fibroblastos nunca mueren, solo duermen. Yadala los despierta y reactiva el sistema de soporte natural de tu rostro.',
+      por_que_tu_linea: 'Yadala Reclaim ofrece un efecto lifting biológico: redefine contornos, recupera volumen y devuelve estructura sin tocar tu expresión ni congelar tus gestos.',
       beneficios: ['Reducción visible de flacidez en mejillas y óvalo', 'Efecto lifting natural sin cirugía ni agujas', 'Piel más densa, menos fina y quebradiza', 'Expresión preservada: tú, en tu mejor versión'],
       protocolo: 'Aplica Yadala Reclaim 1–2 veces por semana. 55 minutos de ritual profundo. La primera semana notarás que tu piel "respira" diferente. A las 4 semanas, el lifting natural es visible y duradero.',
       mensaje_final: '"No quiero parecer otra. Quiero verme como yo, en mi mejor versión."'
@@ -912,13 +836,13 @@ function showResult(result) {
     </div>
 
     <div class="cta-section">
-      <div class="cta-title">Tu ritual te espera</div>
+      <div class="cta-title">Recibe tu protocolo completo</div>
       <p class="cta-sub">Déjame tu email y te envío la guía completa de Yadala ${lineNames[linea]}<br>+ 10% de descuento en tu primer pedido.</p>
       <div class="email-wrap">
         <input type="email" class="email-input" id="emailInput" placeholder="tu@email.com">
         <button class="btn-cta" onclick="submitEmail()">Quiero mi guía</button>
       </div>
-      <p class="privacy-note">Sin spam. Solo lo que tu piel necesita. Puedes darte de baja cuando quieras.</p>
+      <p class="privacy-note">Sin spam. Solo tu protocolo personalizado. Puedes darte de baja cuando quieras.</p>
       <div style="margin-top:2rem;padding:1.5rem;background:rgba(196,168,130,0.08);border-left:2px solid var(--earth);border-radius:1px">
         <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--bark);line-height:1.6">${result.mensaje_final}</p>
         <p style="font-size:0.72rem;letter-spacing:0.1em;color:var(--earth);margin-top:0.5rem;opacity:0.7">— Pedro Jordà · Fundador YADALA · 4 generaciones</p>
@@ -964,10 +888,7 @@ async function submitEmail() {
       },
       body: JSON.stringify({
         email: email,
-        linea: currentLinea,
-        estado_emocional: window.perfilEmocional ? window.perfilEmocional.estado_emocional : 'curiosa',
-        urgencia: window.perfilEmocional ? window.perfilEmocional.urgencia : 'media',
-        agente_circa: window.perfilEmocional ? window.perfilEmocional.agente_circa : 'identidad'
+        linea: currentLinea
       })
     });
 
@@ -982,7 +903,7 @@ async function submitEmail() {
       },
       body: JSON.stringify({
         email: email,
-        edad: answers.edad,
+        edad: answers.estado,
         preocupacion: answers.preocupacion,
         estilo: answers.estilo,
         cosmetica: answers.cosmetica,
