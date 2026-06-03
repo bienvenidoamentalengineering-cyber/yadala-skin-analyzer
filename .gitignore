@@ -1,0 +1,28 @@
+# Secretos — NUNCA al repositorio
+.env
+.env.local
+.env.production
+
+# Fórmulas y documentos confidenciales
+02-producto/formulas-seguras/
+*.formula
+*.secret
+
+# Dependencias
+node_modules/
+__pycache__/
+*.pyc
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Editores
+.vscode/settings.json
+.idea/
+
+# Build
+dist/
+build/
+.next/

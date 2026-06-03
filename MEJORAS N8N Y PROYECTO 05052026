@@ -1,0 +1,32 @@
+ctamente dónde están las oportunidades.
+Las mejoras más importantes que veo:
+
+1. El quiz — mejora inmediata y de alto impacto
+El quiz actual determina la línea de forma simple. Pero tienes voice_fragments con 225 frases reales de clientas organizadas por zona facial e intensidad emocional. Si el quiz usa ese lenguaje real en las opciones — en lugar de opciones genéricas — la identificación es mucho más precisa y el lead se siente reconocida desde el primer clic.
+
+2. El WF3 WhatsApp — cuando llegue el número
+El briefing describe exactamente cómo debe funcionar — identifica zona por voice_fragments, consulta skin_insights, aplica CIRCA según agent_skills. Esto está todo en Supabase listo para usar. Solo falta montarlo correctamente en n8n.
+
+3. Los emails — personalización por zona facial
+Ahora los emails se personalizan por línea (PREVENT/RECOVER/RECLAIM). Pero podrían personalizarse también por zona facial específica — usando skin_insights para mencionar exactamente lo que le preocupa a esa persona.
+
+4. El scoring — enriquecerlo con estado emocional
+
+El WF5 ahora puntúa por comportamiento. Podría también puntuar por estado emocional del quiz — frustrada en urgencia alta vale más puntos que curiosa en urgencia baja.
+
+Opciones:
+
+Emails días 3, 5, 7, 10 — completar la secuencia de nurturing personalizada por zona y estado emocional
+Mejorar el WF5 scoring — enriquecerlo con el estado emocional del quiz para que cold/warm/hot sea más preciso
+WF4 B2B — añadir centros reales de Lanzarote a la tabla b2b_centros
+Quiz — seguir mejorando con más zonas faciales
+
+Día 3 → Educativo — qué está pasando en su piel (biología simple)
+Día 5 → Rompe creencia — el error más común que comete con su piel
+Día 7 → Testimonio — alguien como ella que lo vivió
+Día 10 → Invitación suave — el ritual Yadala como próximo paso
+
+WF6 B2C — Conversión ⬜ No creado
+Es el agente de cierre para leads HOT. Lo acordamos construirlo cuando tengas 10-20 cierres reales hechos por ti — 
+para que el agente aprenda de tu experiencia real antes de automatizarlo
+

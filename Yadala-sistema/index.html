@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yadala Sistema — Roadmap</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Estilos específicos del roadmap */
+    .page-header {
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .page-title span { color: var(--oro-mid); }
+    .page-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Progress global */
+    .progress-global {
+      margin-bottom: 2rem;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .progress-label-text {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .progress-track {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--oro-mid), var(--oro));
+      border-radius: 2px;
+      transition: width 0.5s ease;
+    }
+
+    /* Voces banner */
+    .voces-banner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+    .voz-pill {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      border: 0.5px solid var(--border);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .voz-pill:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .voz-pill.p { background: #F0FAF4; border-color: rgba(45,106,79,0.2); }
+    .voz-pill.r { background: #F7F0FF; border-color: rgba(155,93,229,0.2); }
+    .voz-pill.c { background: #F0F0F8; border-color: rgba(58,58,92,0.2); }
+    .voz-emoji { font-size: 1.3rem; display: block; margin-bottom: 4px; }
+    .voz-name { font-size: 11px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; }
+    .voz-tag { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* Bloques */
+    .block {
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: var(--bg-card);
+    }
+    .block-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .block-header:hover { background: var(--bg); }
+
+    .block-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .icon-b1 { background: #E6F1FB; }
+    .icon-b2 { background: #EAF3DE; }
+    .icon-b3 { background: #FAEEDA; }
+    .icon-b4 { background: #EEEDFE; }
+
+    .block-info { flex: 1; }
+    .block-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .block-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .block-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .mini-bar {
+      width: 72px; height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .mini-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+    .fill-b1 { background: #185FA5; }
+    .fill-b2 { background: #3B6D11; }
+    .fill-b3 { background: #854F0B; }
+    .fill-b4 { background: #534AB7; }
+
+    .mini-pct {
+      font-size: 12px;
+      color: var(--text-muted);
+      min-width: 30px;
+      text-align: right;
+    }
+    .chevron {
+      font-size: 11px;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+    .chevron.open { transform: rotate(180deg); }
+
+    /* Body del bloque */
+    .block-body {
+      display: none;
+      border-top: 0.5px solid var(--border);
+      padding: 0 1.25rem 1rem;
+    }
+    .block-body.open { display: block; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    /* Tareas */
+    .task {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 0.5px solid var(--border);
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .task:last-child { border-bottom: none; }
+    .task:hover { opacity: 0.75; }
+
+    .task-check {
+      width: 18px; height: 18px;
+      border: 1.5px solid var(--border-mid);
+      border-radius: 5px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+      background: var(--bg-card);
+    }
+    .task-check.done {
+      background: var(--oro-mid);
+      border-color: var(--oro-mid);
+    }
+    .task-check.done::after {
+      content: '✓';
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .task-body { flex: 1; }
+    .task-name {
+      font-size: 14px;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .task-name.done {
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .task-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      font-family: 'Courier New', monospace;
+    }
+    .task-badge { flex-shrink: 0; margin-top: 2px; }
+
+    /* Links a archivos */
+    .file-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 0.5px solid var(--border);
+    }
+    .file-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border: 0.5px solid var(--border-mid);
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.15s;
+      background: var(--bg);
+    }
+    .file-link:hover {
+      border-color: var(--oro-mid);
+      color: var(--oro);
+      background: var(--oro-pale);
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 2rem 0;
+      border-top: 0.5px solid var(--border);
+      margin-top: 2rem;
+      font-family: var(--font-display);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1 class="page-title">Yadala <span>Sistema</span></h1>
+    <p class="page-sub">HeyGen · HighLevel · Voces de tu piel — Roadmap ejecutable</p>
+  </div>
+
+  <!-- Voces banner -->
+  <div class="voces-banner">
+    <a class="voz-pill p" href="guiones/prevent.md">
+      <span class="voz-emoji">🌿</span>
+      <span class="voz-name">Prevent</span>
+      <span class="voz-tag">La que despierta</span>
+    </a>
+    <a class="voz-pill r" href="guiones/recover.md">
+      <span class="voz-emoji">🔥</span>
+      <span class="voz-name">Recover</span>
+      <span class="voz-tag">La que te devuelve</span>
+    </a>
+    <a class="voz-pill c" href="guiones/reclaim.md">
+      <span class="voz-emoji">🌑</span>
+      <span class="voz-name">Reclaim</span>
+      <span class="voz-tag">La que honra y eleva</span>
+    </a>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num" id="done-count">0</div>
+      <div class="stat-lbl">Completadas</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="total-count">0</div>
+      <div class="stat-lbl">Total tareas</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="pct-global">0%</div>
+      <div class="stat-lbl">Progreso</div>
+    </div>
+  </div>
+
+  <!-- Progress global -->
+  <div class="progress-global">
+    <div class="progress-header">
+      <span class="progress-label-text">Progreso total del sistema</span>
+      <span class="progress-label-text" id="pct-label-global">0 de 0 tareas</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="global-bar" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="btn" onclick="exportProgress()">⬇ Exportar progreso</button>
+    <button class="btn" onclick="resetAll()">↺ Resetear</button>
+  </div>
+
+  <!-- ============================
+       BLOQUE 1: HEYGEN
+  ============================= -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock('B1')">
+      <div class="block-icon icon-b1">🎬</div>
+      <div class="block-info">
+        <div class="block-title">Bloque 1 — HeyGen: avatares y vídeos</div>
+        <div class="block-desc">Las 3 voces · Formación · Reels por línea</div>
+      </div>
+      <div class="block-meta">
+        <div class="mini-bar"><div class="mini-fill fill-b1" id="bar-B1" style="width:0%"></div></div>
+        <div class="mini-pct" id="pct-B1">0%</div>
+        <div class="chevron open" id="chev-B1">▲</div>
+      </div>
+    </div>
+    <div class="block-body open" id="body-B1">
+
+      <div class="section-label">A — Configuración inicial</div>
+
+      <div class="task" onclick="toggleTask('h1')" data-task="h1" data-block="B1">
+        <div class="task-check" id="check-h1"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h1">Crear cuenta HeyGen → plan Creator (29$/mes)</div>
+          <div class="task-hint">heygen.com → Sign up → Creator</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('h2')" data-task="h2" data-block="B1">
+        <div class="task-check" id="check-h2"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h2">Configurar voz en español: Lucía o Valentina, tono cálido</div>
+          <div class="task-hint">Voice → Spanish (Spain) → preview antes de confirmar</div>
+        </div>
+        <span class="badge badge-quick task-badge">Rápido</span>
+      </div>
+
+      <div class="section-label">B — Avatar PREVENT "La que despierta"</div>
+
+      <div class="task" onclick="toggleTask('h3')" data-task="h3" data-block="B1">
+        <div class="task-check" id="check-h3"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h3">Crear avatar PREVENT: luz natural, sin maquillaje, fondo neutro</div>
+          <div class="task-hint">Photo Avatar → energía: ligera, fresca → velocidad 1.05x</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('h4')" data-task="h4" data-block="B1">
+        <div class="task-check" id="check-h4"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h4">Grabar vídeo 1 PREVENT con guion de 90 segundos</div>
+          <div class="task-hint">Ver: guiones/prevent.md → Vídeo 1 Captación</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="section-label">C — Avatar RECOVER "La que te devuelve a ti"</div>
+
+      <div class="task" onclick="toggleTask('h5')" data-task="h5" data-block="B1">
+        <div class="task-check" id="check-h5"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h5">Crear avatar RECOVER: más estructura, elegancia, mirada directa</div>
+          <div class="task-hint">Photo Avatar → energía: segura, directa → velocidad 1.0x</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('h6')" data-task="h6" data-block="B1">
+        <div class="task-check" id="check-h6"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h6">Grabar vídeo 1 RECOVER + 4 módulos de formación B2B</div>
+          <div class="task-hint">Ver: guiones/recover.md · flujos/ghl-flujo2-onboarding.md</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="section-label">D — Avatar RECLAIM "La que honra y eleva"</div>
+
+      <div class="task" onclick="toggleTask('h7')" data-task="h7" data-block="B1">
+        <div class="task-check" id="check-h7"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h7">Crear avatar RECLAIM: autenticidad, piel real, fuerza</div>
+          <div class="task-hint">Photo Avatar → energía: profunda, pausada → velocidad 0.92x</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('h8')" data-task="h8" data-block="B1">
+        <div class="task-check" id="check-h8"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h8">Grabar vídeo 1 RECLAIM con guion de 90 segundos</div>
+          <div class="task-hint">Ver: guiones/reclaim.md → arranque muy lento, pausas largas</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="section-label">E — Formación B2B (4 módulos con Gamma + HeyGen)</div>
+
+      <div class="task" onclick="toggleTask('h9')" data-task="h9" data-block="B1">
+        <div class="task-check" id="check-h9"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h9">Subir dossier a Gamma.app y generar presentación automática</div>
+          <div class="task-hint">gamma.app → Import PDF → editar → exportar slides</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('h10')" data-task="h10" data-block="B1">
+        <div class="task-check" id="check-h10"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h10">Módulo 1: Ciencia de Yadala (6 min)</div>
+          <div class="task-hint">HeyGen Slides → avatar RECOVER presenta → fisiología + fibroblastos</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('h11')" data-task="h11" data-block="B1">
+        <div class="task-check" id="check-h11"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h11">Módulo 2: Protocolo de aplicación en cabina (8 min)</div>
+          <div class="task-hint">Las 7 fases · qué decir mientras aplicas · cómo gestionar contracciones</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('h12')" data-task="h12" data-block="B1">
+        <div class="task-check" id="check-h12"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h12">Módulo 3: Las 3 voces — cómo hablar con cada clienta (7 min)</div>
+          <div class="task-hint">Guion diferenciado por perfil · palabras que sí / palabras prohibidas</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('h13')" data-task="h13" data-block="B1">
+        <div class="task-check" id="check-h13"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-h13">Módulo 4: Argumentario vs competencia (5 min)</div>
+          <div class="task-hint">Bótox / Radiofrecuencia / Hilos / The Ordinary — diferenciadores reales</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="file-links">
+        <a class="file-link" href="guiones/prevent.md">📄 prevent.md</a>
+        <a class="file-link" href="guiones/recover.md">📄 recover.md</a>
+        <a class="file-link" href="guiones/reclaim.md">📄 reclaim.md</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       BLOQUE 2: HIGHLEVEL
+  ============================= -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock('B2')">
+      <div class="block-icon icon-b2">⚙️</div>
+      <div class="block-info">
+        <div class="block-title">Bloque 2 — HighLevel: cerebro del sistema</div>
+        <div class="block-desc">Quiz · Pipelines · Flujos emocionales · WhatsApp</div>
+      </div>
+      <div class="block-meta">
+        <div class="mini-bar"><div class="mini-fill fill-b2" id="bar-B2" style="width:0%"></div></div>
+        <div class="mini-pct" id="pct-B2">0%</div>
+        <div class="chevron" id="chev-B2">▼</div>
+      </div>
+    </div>
+    <div class="block-body" id="body-B2">
+
+      <div class="section-label">A — Configuración base</div>
+
+      <div class="task" onclick="toggleTask('g1')" data-task="g1" data-block="B2">
+        <div class="task-check" id="check-g1"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g1">Crear cuenta GoHighLevel (97$/mes) y subaccount Yadala</div>
+          <div class="task-hint">go.gohighlevel.com → Agency Starter → New Sub-Account</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('g2')" data-task="g2" data-block="B2">
+        <div class="task-check" id="check-g2"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g2">Conectar dominio y configurar SMTP (Mailgun recomendado)</div>
+          <div class="task-hint">Settings → Email Services → Mailgun → configurar DNS records</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('g3')" data-task="g3" data-block="B2">
+        <div class="task-check" id="check-g3"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g3">Crear pipeline "Centros B2B": Lead → Contactado → Interesado → Onboarding → Cliente activo</div>
+          <div class="task-hint">CRM → Pipelines → New Pipeline → añadir 5 etapas</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="section-label">B — Quiz "Voces de tu piel" (segmentación automática)</div>
+
+      <div class="task" onclick="toggleTask('g4')" data-task="g4" data-block="B2">
+        <div class="task-check" id="check-g4"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g4">Crear quiz de 5 preguntas en HL → resultado: Prevent / Recover / Reclaim</div>
+          <div class="task-hint">Sites → Funnels → Quiz → lógica condicional por respuestas</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('g5')" data-task="g5" data-block="B2">
+        <div class="task-check" id="check-g5"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g5">Configurar tags automáticos: prevent-lead / recover-lead / reclaim-lead</div>
+          <div class="task-hint">Cada resultado del quiz aplica el tag correspondiente al contacto</div>
+        </div>
+        <span class="badge badge-auto task-badge">Auto</span>
+      </div>
+
+      <div class="section-label">C — Flujo 1: Captación B2B</div>
+
+      <div class="task" onclick="toggleTask('g6')" data-task="g6" data-block="B2">
+        <div class="task-check" id="check-g6"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g6">Crear formulario de descarga del dossier (nombre, email, centro, ciudad)</div>
+          <div class="task-hint">Sites → Forms → New Form → 4 campos → conectar a pipeline</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('g7')" data-task="g7" data-block="B2">
+        <div class="task-check" id="check-g7"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g7">Automatización: form enviado → email D0 con vídeo HeyGen captación</div>
+          <div class="task-hint">Automation → trigger: form submit → send email → embed video URL</div>
+        </div>
+        <span class="badge badge-auto task-badge">Auto</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('g8')" data-task="g8" data-block="B2">
+        <div class="task-check" id="check-g8"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g8">Secuencia 7 días: D2 protocolo / D4 módulo 1 / D7 CTA llamada</div>
+          <div class="task-hint">Ver: flujos/ghl-flujo1-captacion.md → copiar asuntos y cuerpos</div>
+        </div>
+        <span class="badge badge-auto task-badge">Auto</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('g9')" data-task="g9" data-block="B2">
+        <div class="task-check" id="check-g9"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g9">WhatsApp fallback D7: si no abrió ningún email → mensaje automático</div>
+          <div class="task-hint">Condition: email opened = false → send WhatsApp template</div>
+        </div>
+        <span class="badge badge-auto task-badge">Auto</span>
+      </div>
+
+      <div class="section-label">D — Flujo 2: Onboarding centros nuevos</div>
+
+      <div class="task" onclick="toggleTask('g10')" data-task="g10" data-block="B2">
+        <div class="task-check" id="check-g10"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g10">Automatización onboarding: trigger cuando pasa a "Cliente activo"</div>
+          <div class="task-hint">Automation → trigger: opportunity stage = Cliente activo → start sequence</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('g11')" data-task="g11" data-block="B2">
+        <div class="task-check" id="check-g11"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g11">4 emails semanales con módulos de formación (semanas 1 a 4)</div>
+          <div class="task-hint">Ver: flujos/ghl-flujo2-onboarding-reactivacion.md</div>
+        </div>
+        <span class="badge badge-auto task-badge">Auto</span>
+      </div>
+
+      <div class="section-label">E — Flujo 3: Reactivación de inactivos</div>
+
+      <div class="task" onclick="toggleTask('g12')" data-task="g12" data-block="B2">
+        <div class="task-check" id="check-g12"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g12">Smart list: centros sin pedido en 60 días → tag inactivo-60d</div>
+          <div class="task-hint">Contacts → Smart List → filter: last_order > 60 days</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('g13')" data-task="g13" data-block="B2">
+        <div class="task-check" id="check-g13"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-g13">Email personalizado D1 con vídeo HeyGen que dice el nombre del centro</div>
+          <div class="task-hint">Variable {{contact.company_name}} en guion HeyGen → Make webhook → HL</div>
+        </div>
+        <span class="badge badge-auto task-badge">Auto</span>
+      </div>
+
+      <div class="file-links">
+        <a class="file-link" href="flujos/ghl-flujo1-captacion.md">📄 flujo 1 captación</a>
+        <a class="file-link" href="flujos/ghl-flujo2-onboarding-reactivacion.md">📄 flujo 2 + 3</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       BLOQUE 3: MAKE + CONEXIONES
+  ============================= -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock('B3')">
+      <div class="block-icon icon-b3">🔗</div>
+      <div class="block-info">
+        <div class="block-title">Bloque 3 — Make.com: conexiones y webhooks</div>
+        <div class="block-desc">HeyGen ↔ HighLevel · Automatización del render</div>
+      </div>
+      <div class="block-meta">
+        <div class="mini-bar"><div class="mini-fill fill-b3" id="bar-B3" style="width:0%"></div></div>
+        <div class="mini-pct" id="pct-B3">0%</div>
+        <div class="chevron" id="chev-B3">▼</div>
+      </div>
+    </div>
+    <div class="block-body" id="body-B3">
+
+      <div class="section-label">A — Setup Make.com</div>
+
+      <div class="task" onclick="toggleTask('m1')" data-task="m1" data-block="B3">
+        <div class="task-check" id="check-m1"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-m1">Crear cuenta Make.com y conectar API de HeyGen</div>
+          <div class="task-hint">make.com → Connections → HTTP → HeyGen API key → test</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('m2')" data-task="m2" data-block="B3">
+        <div class="task-check" id="check-m2"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-m2">Conectar Make con HighLevel (API key + webhook URL)</div>
+          <div class="task-hint">HL → Settings → API → copiar key → Make → nueva conexión GHL</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="section-label">B — Escenario principal: vídeo listo → HL recibe URL</div>
+
+      <div class="task" onclick="toggleTask('m3')" data-task="m3" data-block="B3">
+        <div class="task-check" id="check-m3"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-m3">Crear escenario: HeyGen callback → Make → actualiza campo en HL</div>
+          <div class="task-hint">HeyGen Callback URL → Make webhook → HL: update contact custom field "video_url"</div>
+        </div>
+        <span class="badge badge-auto task-badge">Auto</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('m4')" data-task="m4" data-block="B3">
+        <div class="task-check" id="check-m4"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-m4">Testear flujo completo: formulario → render → email con vídeo en menos de 5 min</div>
+          <div class="task-hint">Submit con email de prueba → verificar render en HeyGen → email recibido OK</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+
+      <div class="section-label">C — Analytics y KPIs</div>
+
+      <div class="task" onclick="toggleTask('m5')" data-task="m5" data-block="B3">
+        <div class="task-check" id="check-m5"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-m5">Activar tracking de vídeo en HeyGen (quién ve, cuánto tiempo)</div>
+          <div class="task-hint">HeyGen → Analytics → enable tracking → copy embed con parámetros UTM</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('m6')" data-task="m6" data-block="B3">
+        <div class="task-check" id="check-m6"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-m6">Dashboard HL: apertura emails / clics / conversión por pipeline</div>
+          <div class="task-hint">HL → Reporting → Email Stats + Opportunity conversion → revisar lunes</div>
+        </div>
+        <span class="badge badge-clave task-badge">Clave</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       BLOQUE 4: VS CODE SETUP
+  ============================= -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock('B4')">
+      <div class="block-icon icon-b4">💻</div>
+      <div class="block-info">
+        <div class="block-title">Bloque 4 — VS Code: entorno de trabajo</div>
+        <div class="block-desc">Extensiones · Estructura · Flujo de trabajo diario</div>
+      </div>
+      <div class="block-meta">
+        <div class="mini-bar"><div class="mini-fill fill-b4" id="bar-B4" style="width:0%"></div></div>
+        <div class="mini-pct" id="pct-B4">0%</div>
+        <div class="chevron" id="chev-B4">▼</div>
+      </div>
+    </div>
+    <div class="block-body" id="body-B4">
+
+      <div class="section-label">A — Instalar extensiones esenciales</div>
+
+      <div class="task" onclick="toggleTask('v1')" data-task="v1" data-block="B4">
+        <div class="task-check" id="check-v1"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-v1">Instalar extensión "Live Server" de Ritwick Dey</div>
+          <div class="task-hint">Ctrl+Shift+X → buscar "Live Server" → Install → clic derecho en index.html → Open with Live Server</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('v2')" data-task="v2" data-block="B4">
+        <div class="task-check" id="check-v2"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-v2">Instalar "Markdown Preview Enhanced" para leer guiones .md</div>
+          <div class="task-hint">Ctrl+Shift+X → Markdown Preview Enhanced → Install → Ctrl+Shift+V para preview</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('v3')" data-task="v3" data-block="B4">
+        <div class="task-check" id="check-v3"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-v3">Instalar "Todo Tree" para ver todas las tareas pendientes del proyecto</div>
+          <div class="task-hint">Buscar "Todo Tree" → Install → aparece en barra lateral izquierda</div>
+        </div>
+        <span class="badge badge-quick task-badge">Útil</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('v4')" data-task="v4" data-block="B4">
+        <div class="task-check" id="check-v4"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-v4">Instalar "Prettier" para formatear código automáticamente</div>
+          <div class="task-hint">Buscar "Prettier" → Install → Settings → Default Formatter → Prettier</div>
+        </div>
+        <span class="badge badge-quick task-badge">Útil</span>
+      </div>
+
+      <div class="section-label">B — Flujo de trabajo diario</div>
+
+      <div class="task" onclick="toggleTask('v5')" data-task="v5" data-block="B4">
+        <div class="task-check" id="check-v5"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-v5">Abrir carpeta yadala-sistema como workspace en VS Code</div>
+          <div class="task-hint">File → Open Folder → yadala-sistema → confiar en el autor</div>
+        </div>
+        <span class="badge badge-setup task-badge">Setup</span>
+      </div>
+
+      <div class="task" onclick="toggleTask('v6')" data-task="v6" data-block="B4">
+        <div class="task-check" id="check-v6"></div>
+        <div class="task-body">
+          <div class="task-name" id="name-v6">Rutina lunes: abrir roadmap + revisar métricas HL + actualizar tareas</div>
+          <div class="task-hint">Live Server → index.html · HL Reporting → Email Stats · marcar completadas</div>
+        </div>
+        <span class="badge badge-clave task-badge">Hábito</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note">"No será mágico por la tecnología. Será mágico por la coherencia emocional." — Yadala</p>
+
+</div>
+
+<script src="js/roadmap.js"></script>
+</body>
+</html>

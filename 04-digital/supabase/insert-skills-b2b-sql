@@ -1,0 +1,211 @@
+INSERT INTO agent_skills (name, category, content, agent) VALUES
+
+('B2B Objeciones por fase — Centros estética', 'b2b',
+'FRASE CENTRAL ADN COMERCIAL: "No tienes que venderlo. Se vende cuando la clienta lo prueba."
+
+POSICIONAMIENTO PARA CENTROS: "Tratamiento de bioestimulacion facial con efecto visible en una sesion, sin aparatologia ni inversion inicial."
+
+LA VERDAD DEL SECTOR: Los centros NO compran ingredientes/ciencia/storytelling. Compran SEGURIDAD + FACILIDAD + DINERO.
+
+FASE 1 PROSPECCION (abrir conversacion, no vender):
+"No tengo tiempo" → "Justo por eso te escribo. Es algo que puedes añadir sin cambiar nada de lo que ya haces."
+"Ya trabajo con marcas" → "No sustituye nada. Es un tratamiento extra para aumentar ticket medio."
+"No me interesa" → "Solo estoy proponiendo una demo sin compromiso para que lo veas en directo."
+"Seguro que es caro" → "Lo pruebas primero y decides si encaja antes de invertir."
+"Estoy bien como estoy" → "Esto es justo para sumar ingresos sin tocar lo que ya te funciona."
+"No trabajo faciales" → "Muchos centros lo usan para empezar a introducir faciales de forma sencilla."
+"No tengo huecos" → "La idea es ocupar huecos muertos con un tratamiento facil de ofrecer."
+"Ya probe cosas similares" → "La diferencia es que la clienta lo ve en el momento. No tienes que convencer."
+"Mandame info" → "Se entiende mejor viendolo en directo."
+"¿De donde eres?" → "Estoy trabajando aqui en la isla con varios centros haciendo demos presenciales."
+CLAVE FASE 1: no cambio, no riesgo, no esfuerzo.
+
+FASE 2 CONVERSION (generar interes + llevar a demo):
+"¿Que es exactamente?" → "Es un tratamiento facial con efecto visible en una sesion. La clienta lo nota y lo ve."
+"¿Funciona de verdad?" → "No tienes que creerme. En la demo lo ves en una cara real."
+"¿Que lo hace diferente?" → "Que no depende de que tu lo vendas. La clienta lo siente y lo pide."
+"¿Mis clientas lo querran?" → "Cuando ven el resultado en el espejo, normalmente preguntan ellas."
+"¿Cuanto cuesta?" → "Primero mira si encaja en tu centro. Luego vemos numeros."
+"¿Es complicado de aplicar?" → "Es muy sencillo. No cambia tu rutina de trabajo."
+"¿Necesito aparatologia?" → "Nada. Solo tus manos."
+RESPUESTA UNIVERSAL FASE 2: "La diferencia es que cuando lo aplicas, la clienta nota tension, luminosidad... se ve mejor en el espejo. Y eso hace que lo pida."
+
+FASE 3 DEMO (convertir percepcion en decision):
+"Parece efecto momentaneo" → "Por eso lo importante es que lo pruebes con varias clientas."
+"No se si lo vendere" → "Cuando algo se ve en el espejo, no necesitas venderlo."
+"No se como ofrecerlo" → "Simple: pruebalo y mira tu piel. Eso abre la venta."
+"Mis clientas son diferentes" → "Perfecto, probamos con una de tus clientas reales."
+"Ya tengo tratamientos" → "Esto no compite, complementa."
+"¿Que margen tengo?" → "Esta pensado para que tengas margen alto por sesion."
+NARRATIVA DEMO: "Esto no es solo que funcione. Es que es facil de vender. Porque no depende de que tu expliques, depende de que la clienta lo vive."
+CIRCA SIN DECIR CIRCA: "Hay un protocolo detras que hace que el resultado sea repetible, no es algo puntual."
+
+FASE 4 CIERRE (primera compra sin bloqueo):
+"Dejame pensarlo" → "La mejor forma de decidir es probar con clientas esta semana."
+"Ahora no puedo invertir" → "Empieza pequeno y valida primero."
+"No se si lo movere" → "Por eso empezamos con pocas unidades."
+"Lo veo caro" → "Miralo por sesion, no por producto."
+"¿Y si no funciona?" → "Lo sabras rapido con tus clientas."
+NARRATIVA CIERRE: "Si lo aplicas a 2-3 clientas esta semana, ya sabes si funciona. No necesitas una gran inversion para verlo."
+
+FASE 5 POSTVENTA (activacion + repeticion):
+"No lo estoy moviendo" → "Haz una demo a una clienta esta semana y observa reaccion."
+"Mis clientas no preguntan" → "No esperes que pregunten, ofrecelo como prueba."
+"No se como venderlo" → "No lo vendas, haz que lo vivan."
+"No veo resultados" → "¿Cuantas clientas lo han probado?"
+NARRATIVA POSTVENTA: "No lo vendas como producto. Ofrecelo como experiencia."
+
+SISTEMA ANTI-FRICCION:
+Prospeccion → "No cambia nada"
+Conversion → "Funciona y se vende solo"
+Demo → "La clienta lo valida"
+Cierre → "Riesgo minimo"
+Postventa → "Activa y repite"',
+ARRAY['b2b', 'whatsapp']),
+
+('B2B Narrativa y CIRCA en cabina', 'b2b',
+'COMO USAR EL METODO CIRCA EN B2B:
+Tu metodo CIRCA no es para explicar. Es para: dar coherencia, sostener objeciones, reforzar autoridad, cerrar.
+
+NARRATIVA B2B — 3 NIVELES:
+Nivel 1 (prospeccion): "Es un tratamiento que cuando lo aplicas, la clienta lo nota y lo ve. Y eso se vende solo."
+Nivel 2 (conversion): "No tienes que convencer a la clienta. Lo prueba, lo ve en el espejo... y te lo pide."
+Nivel 3 (cierre): "Aqui no dependes de marketing ni descuentos. Dependes de un resultado que la clienta siente y repite."
+
+ESTRUCTURA GANADORA PARA CENTROS:
+1. Resultado visible — lo primero siempre
+2. Facilidad de venta — no complica la agenda
+3. Rentabilidad — margen alto por sesion
+4. Sin friccion — no cambia nada de lo que ya hacen
+
+CIRCA EN CABINA (sin decir CIRCA):
+CO-REGULACION: El centro esta saturado de proveedores. Entra regulando primero. Tono tranquilo, sin urgencia, una sola idea, valida su situacion.
+IDENTIDAD: NO "deberias añadir esto" → SI "muchos centros como el tuyo lo estan añadiendo para aumentar ticket medio sin cambiar nada"
+RITUAL: La demo. "Una clienta. 55 minutos. Lo ve en el espejo. Decide."
+CONFIRMACION: Cuando el centro ve el resultado → nombra lo que ocurrio → conecta con rentabilidad → "Eso que acabas de ver es lo que genera repeticion."
+AUTONOMIA: Que el centro sepa activar Yadala solo. "Cuando lo ofrezcas como experiencia, la clienta lo pide."
+
+PROTOCOLO DE DEMO EN CENTRO:
+Antes: selecciona una clienta del centro (no tuya). No expliques mucho, deja que el resultado hable.
+Durante: aplica el tratamiento. El centro observa sin intervenir.
+Despues: pregunta a la clienta "¿Que notas?" → deja que el centro escuche → "Eso es lo que vende solo."
+Frases de cierre post-demo: "¿Cuantas clientas tienes esta semana que podrian vivir esto?" / "Prueba con 2-3 y decides con datos reales." / "No necesitas convencerte. Ya lo has visto."
+
+VOZ B2B:
+SI: lenguaje de negocio (ticket medio, margen, repeticion), simplicidad, resultados concretos
+NO: lenguaje emocional B2C, terminos cientificos, presion de venta directa
+RECUERDA: Los centros compran seguridad + facilidad + dinero. Todo lo que digas debe responder a una de estas tres.',
+ARRAY['b2b', 'whatsapp']),
+
+('B2B Sistema de ventas — Captacion centros', 'b2b',
+'SISTEMA DE CAPTACION B2B LOCAL — FRASES POR FASE
+
+PROSPECCION (abrir conversacion):
+Apertura: "Estoy viendo centros que estan añadiendo un tratamiento que la clienta nota y ve en el momento..."
+Redireccion: "¿Trabajas mas con clientas de facial o corporal ahora mismo?"
+Metamodelo suave: "Cuando dices que tienes agenda llena... ¿tambien de faciales?"
+Curiosidad: "Lo interesante es que no tienes que explicarlo mucho..."
+Disrupcion: "Aqui no es tanto vender... es mas dejar que la clienta lo pruebe."
+Reduccion friccion: "No sustituye nada de lo que ya haces."
+Micro-compromiso: "¿Te encajaria verlo en directo con una clienta real?"
+Foco en resultado: "El cambio se ve en el espejo, no en la teoria."
+Cierre suave: "Si no encaja, lo ves y ya decides tranquila."
+
+CONVERSION (cuando responde):
+Simplificacion: "Es un tratamiento que activa la piel y se nota en la misma sesion."
+Redireccion: "Mas que explicarlo, lo importante es que lo veas aplicado."
+Metamodelo: "¿Que es lo que mas te cuesta ahora en faciales, venderlos o que repitan?"
+Anticipacion: "La mayoria de centros al principio piensan lo mismo..."
+Reduccion riesgo: "Por eso hacemos demo antes de cualquier decision."
+Curiosidad guiada: "Hay un momento en el tratamiento donde la piel responde..."
+Micro-decision: "¿Prefieres mañana o pasado para verlo?"
+Cierre natural: "Lo ves en directo y decides con tus propios ojos."
+
+DEMO (con el centro presente):
+Induccion: "Fijate en la piel mientras actua..."
+Foco guiado: "Mira esta zona ahora y luego la comparamos."
+Amplificacion: "Aqui es donde la piel empieza a activarse."
+Metamodelo: "¿Que estas viendo tu ahora mismo?"
+Validacion: "Eso que notas es lo que hace que luego lo pidan."
+Reencuadre: "Aqui no necesitas convencer a nadie."
+Anclaje visual: "Este momento de espejo es clave."
+Futurizacion suave: "Imaginate esto con tus clientas..."
+Cierre implicito: "Por eso muchos centros lo integran rapido."
+
+CIERRE:
+Reduccion riesgo: "Empieza con pocas unidades y ves como responde."
+Metamodelo: "¿Que necesitarias ver para sentirte comoda empezando?"
+Reencuadre: "No es comprar producto, es probar un servicio."
+Micro-compromiso: "Prueba con 2-3 clientas esta semana."
+Futurizacion: "En unos dias ya tendras tu propia respuesta."
+Eliminacion presion: "No necesitas decidir todo hoy."
+Cierre natural: "¿Te preparo un pequeño pedido para testear?"
+
+POSTVENTA:
+Activacion: "¿Con cuantas clientas lo has probado ya?"
+Metamodelo: "¿Que ha pasado exactamente cuando lo has ofrecido?"
+Reencuadre: "No lo vendas, haz que lo vivan."
+Foco accion: "Esta semana prueba con 3 clientas."
+Anclaje: "Recuerda la reaccion en la demo... Eso es lo que tienes que replicar."
+Claridad: "El problema no suele ser el producto, es no activarlo."
+Direccion: "Vamos a enfocarlo en experiencia, no en explicacion."',
+ARRAY['b2b', 'whatsapp']),
+
+('B2B Ventas en cabina — Clienta final', 'b2b',
+'FRASE MAESTRA DEL SISTEMA: "Cuando la persona lo siente y lo ve, la decision ya esta tomada."
+
+OBJETIVO: experiencia → validacion → repeticion → casa
+Estas frases NO venden, NO presionan, NO manipulan. Dirigen atencion → generan experiencia → provocan decision.
+
+C — CONEXION (inicio del tratamiento):
+"¿Como sientes tu piel ultimamente?"
+"Cuando dices apagada... ¿en que momento lo notas mas?"
+"¿Que es lo que mas te gustaria mejorar ahora mismo?"
+"Es muy comun lo que me dices."
+"No hace falta cambiar nada de golpe."
+"Tu piel ya te esta dando señales."
+"Hoy vamos a activarla un poco."
+"Y tu me dices que vas notando."
+
+I — INDUCCION (durante la aplicacion):
+"Mientras lo aplico, observa lo que vaya pasando."
+"No tienes que hacer nada, solo sentir."
+"Cada piel responde de forma distinta..."
+"En unos minutos suele empezar a notarse."
+"Vamos sin prisa."
+"Todo lo que sientas es parte del proceso."
+"Fijate en esta zona..."
+"Ahora observa como cambia..."
+
+R — RESPUESTA (cuando la piel reacciona):
+"¿Notas esa zona mas activa?"
+"Eso es la piel respondiendo."
+"¿Como describirias esa sensacion?"
+"Comparalo con esta otra zona..."
+"Tu piel esta trabajando ahora mismo."
+"Eso es justo lo que buscamos."
+"Cuando pasa esto, luego se refleja fuera."
+"Luego lo vamos a ver en el espejo."
+
+C — CONFIRMACION (momento del espejo):
+"Mirate aqui..."
+"Fijate en esta zona vs esta otra."
+"¿Que ves tu?"
+"Eso que ves es tu piel activada."
+"No hay maquillaje aqui."
+"Es tu piel trabajando."
+"Quedate con esta imagen."
+"¿Como te hace sentir verla asi?"
+"Esto es lo que buscamos mantener."
+
+A — ANCLAJE + VENTA + CASA:
+"Esto no es algo que tengas que imaginar, lo estas viendo."
+"Por eso muchas personas repiten."
+"Imaginate tu piel asi de forma continua."
+"No es forzado, es tu piel respondiendo."
+"Lo normal aqui es continuar el proceso."
+"En casa puedes mantener esta activacion."
+"¿Te gustaria mantener este efecto?"
+"No necesitas mucho, solo constancia."
+"Te explico como seguir en casa para que no se pierda."',
+ARRAY['b2b', 'whatsapp', 'ventas']);

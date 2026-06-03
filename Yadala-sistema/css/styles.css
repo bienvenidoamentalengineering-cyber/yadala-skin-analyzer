@@ -1,0 +1,169 @@
+/* ============================================
+   YADALA SISTEMA — Estilos globales
+   Paleta: tierra, oro, piel
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  /* Paleta Yadala */
+  --oro:        #B8860B;
+  --oro-mid:    #D4A843;
+  --oro-light:  #F5E6C0;
+  --oro-pale:   #FDF8EE;
+  --tierra:     #6B4C3B;
+  --tierra-mid: #9B7055;
+  --tierra-light: #E8D5C4;
+
+  /* Voces */
+  --prevent:    #2D6A4F;
+  --prevent-bg: #D8F3DC;
+  --recover:    #C77DFF;
+  --recover-bg: #EDE0FF;
+  --reclaim:    #3A3A5C;
+  --reclaim-bg: #E0E0F0;
+
+  /* Neutros */
+  --bg:         #FAFAF8;
+  --bg-card:    #FFFFFF;
+  --border:     rgba(0,0,0,0.08);
+  --border-mid: rgba(0,0,0,0.15);
+  --text-primary:   #1A1A1A;
+  --text-secondary: #666660;
+  --text-muted:     #999990;
+
+  /* Tipografía */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* Espaciado */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:         #0F0F0E;
+    --bg-card:    #1A1A18;
+    --border:     rgba(255,255,255,0.08);
+    --border-mid: rgba(255,255,255,0.15);
+    --text-primary:   #F0EDE8;
+    --text-secondary: #A09C94;
+    --text-muted:     #666660;
+    --oro-pale:   #1A1610;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Utilidades ---- */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+.badge-prevent { background: var(--prevent-bg); color: var(--prevent); }
+.badge-recover { background: var(--recover-bg); color: #6B35C2; }
+.badge-reclaim { background: var(--reclaim-bg); color: var(--reclaim); }
+.badge-setup   { background: #E6F1FB; color: #185FA5; }
+.badge-clave   { background: var(--oro-light); color: var(--oro); }
+.badge-auto    { background: #EEEDFE; color: #534AB7; }
+.badge-quick   { background: #EAF3DE; color: #3B6D11; }
+
+/* ---- Barra de progreso ---- */
+.progress-track {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--oro-mid);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+/* ---- Voz cards ---- */
+.voz-card {
+  border-left: 3px solid;
+  padding: 1rem 1.25rem;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-bottom: 0.75rem;
+}
+.voz-prevent { border-color: var(--prevent); background: #F0FAF4; }
+.voz-recover { border-color: #9B5DE5; background: #F7F0FF; }
+.voz-reclaim { border-color: var(--reclaim); background: #F0F0F8; }
+
+@media (prefers-color-scheme: dark) {
+  .voz-prevent { background: #0D1F14; }
+  .voz-recover { background: #160F20; }
+  .voz-reclaim { background: #0F0F18; }
+}
+
+/* ---- Botones ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border-mid);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.btn:hover {
+  background: var(--oro-pale);
+  border-color: var(--oro-mid);
+  color: var(--oro);
+}
+
+.btn-primary {
+  background: var(--oro-mid);
+  border-color: var(--oro-mid);
+  color: white;
+}
+.btn-primary:hover {
+  background: var(--oro);
+  color: white;
+}
