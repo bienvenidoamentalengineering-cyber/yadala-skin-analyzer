@@ -13,8 +13,7 @@ https://github.com/bienvenidoamentalengineering-cyber/yadala-skin-analyzer
 
 API Antropic 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
 
-Claude Console API Key
-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
+ANTHROPIC_API_KEY=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
 
 ## Cloudflare Worker (proxy Claude API)
 https://yadala-proxy.bienvenidoamentalengineering.workers.dev
