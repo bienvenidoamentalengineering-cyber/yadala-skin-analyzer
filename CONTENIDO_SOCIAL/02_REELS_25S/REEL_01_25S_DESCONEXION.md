@@ -1,0 +1,2 @@
+VERSIÓN 25 SEGUNDOS · 5 CLIPS
+ClipTiempoFormatoTexto10–4sHOOK narrado + overlay"Tu piel está ahí. Pero ya no responde." · OVERLAY: "¿La sientes apagada?"24–10sMINI-HOYO"No es que estés mal. Es que algo en ella dejó de encenderse."310–16sCLIFFHANGER"Y eso no lo arregla ninguna crema que tape."416–22sIDEA PRINCIPAL"Tu piel no necesita más. Necesita volver a escuchar."522–25sPREGUNTA DISONANTE"¿Cuándo fue la última vez que tu piel te respondió de verdad?"

@@ -1,0 +1,2 @@
+VERSIÓN 25 SEGUNDOS · 5 CLIPS
+ClipTiempoFormatoTexto10–4sHOOK narrado + overlay"Cuantos más productos uses… peor puede responder tu piel." · OVERLAY: "Más no es más."24–10sMINI-HOYO"Durante meses pensé que necesitaba más. Pero mi piel estaba saturada."310–16sCLIFFHANGER"Tu piel no necesita más ayuda. Necesita espacio."416–22sIDEA PRINCIPAL"Una sola señal clara. Y la piel vuelve a funcionar sola."522–25sPREGUNTA DISONANTE"¿Y si el problema es que no le estás dejando hacer lo suyo?"

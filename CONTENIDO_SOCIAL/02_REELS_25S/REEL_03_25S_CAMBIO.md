@@ -1,0 +1,2 @@
+VERSIÓN 25 SEGUNDOS · 5 CLIPS
+ClipTiempoFormatoTexto10–4sHOOK narrado + overlay"Hay un momento en que te miras y ya no te reconoces." · OVERLAY: "Eso no es envejecer."24–10sMINI-HOYO"No es una arruga. Es que tu cara dejó de contar lo que sientes."310–16sCLIFFHANGER"Y nadie te dice que eso no se corrige. Se activa."416–22sIDEA PRINCIPAL"Tu rostro tiene historia. Lo que necesita es que vuelva a hablar."522–25sPREGUNTA DISONANTE"¿Cuándo fue la última vez que te viste en el espejo y dijiste: eso soy yo?"
