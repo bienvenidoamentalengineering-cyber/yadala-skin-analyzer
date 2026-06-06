@@ -1,4 +1,6 @@
 
+https://github.com/bienvenidoamentalengineering-cyber/yadala-skin-analyzer/blob/master/CONTENIDO_SOCIAL/05_TENDENCIAS/TENDENCIAS_JUNIO_2026.md
+
 🔥 Macro-tendencia 1
 De "antiedad" a "longevidad de piel"
 
