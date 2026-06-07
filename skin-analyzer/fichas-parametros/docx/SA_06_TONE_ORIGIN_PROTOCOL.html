@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TONE ORIGIN PROTOCOL™ — Yadala</title>
+<style>
+  :root{--brown:#3E2F2B;--gold:#C6A56B;--cream:#F5EFE6;--cream-light:#FAF6F1;--text:#2A2A2A;--soft:#555;--border:#E0DDD8;--gray:#F5F5F3;--red-bg:#FCEBEB;--red-text:#791F1F;--amber-bg:#FAEEDA;--amber-text:#633806;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,sans-serif;font-size:14px;color:var(--text);background:#fff;max-width:900px;margin:0 auto;padding:40px 32px}
+  .hero{border-left:6px solid var(--brown);padding:28px 32px;margin-bottom:20px;background:var(--cream-light);border-radius:0 8px 8px 0}
+  .hero-tag{font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .product-name{font-size:24px;font-weight:bold;color:var(--brown);margin-bottom:4px}
+  .product-sub{font-size:13px;color:var(--gold);font-style:italic;margin-bottom:2px}
+  .product-concept{font-size:14px;font-weight:bold;color:var(--brown);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+  hr.divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+  .hero-title{font-size:26px;font-weight:bold;color:var(--text);line-height:1.2;margin-bottom:6px}
+  .hero-title .acc{color:var(--brown)}
+  .hero-sub{font-size:13px;color:#777;font-style:italic;margin-bottom:14px}
+  .badges{display:flex;gap:8px;flex-wrap:wrap}
+  .badge{font-size:11px;font-weight:bold;padding:3px 12px;border-radius:20px}
+  .b-prev{background:#E6F1FB;color:#0C447C}.b-rec{background:#EAF3DE;color:#27500A}.b-recl{background:#FBEAF0;color:#72243E}.b-param{background:#f0ede8;color:#888;border:1px solid var(--border)}
+
+  /* SEÑAL BOX — el concepto central de esta ficha */
+  .signal-box{background:var(--brown);border-radius:8px;padding:24px 28px;margin-bottom:20px}
+  .signal-label{font-size:10px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:6px;overflow:hidden;margin-bottom:16px}
+  .signal-col-head{padding:8px 16px;font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.06em;text-align:center}
+  .signal-col-head.left{background:rgba(255,255,255,.1);color:#ccc}
+  .signal-col-head.right{background:var(--gold);color:var(--brown)}
+  .signal-row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.1)}
+  .signal-cell{padding:10px 16px;font-size:13px;text-align:center}
+  .signal-cell.left{color:rgba(245,239,230,.6);font-style:italic}
+  .signal-cell.right{color:var(--cream);font-weight:bold}
+  .signal-master{text-align:center;padding-top:16px;border-top:1px solid rgba(198,165,107,.3)}
+  .signal-master-l1{font-size:16px;font-weight:bold;color:var(--cream);margin-bottom:4px}
+  .signal-master-l2{font-size:18px;font-weight:bold;color:var(--gold)}
+
+  .cabina{margin-bottom:20px;border-radius:8px;overflow:hidden}
+  .cab-top{background:var(--brown);padding:10px 20px;font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.1em;color:var(--gold)}
+  .cab-body{background:#2C1F1B;padding:20px;border-bottom:3px solid var(--gold)}
+  .cab-quote{font-size:15px;color:var(--cream);line-height:1.65;font-style:italic}
+  .cab-foot{background:var(--brown);padding:10px 20px;font-size:12px;color:var(--gold);font-style:italic}
+
+  .frase-section{margin-bottom:20px}
+  .frase-title{font-size:13px;font-weight:bold;color:var(--brown);padding:12px 0 10px;border-bottom:2px solid var(--gold);margin-bottom:12px}
+  .frase-card{border-radius:6px;overflow:hidden;margin-bottom:10px}
+  .frase-card-top{padding:8px 14px;background:var(--gray);border-left:3px solid var(--gold)}
+  .frase-card-version{font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.06em;color:var(--gold)}
+  .frase-card-when{font-size:11px;color:#888;font-style:italic}
+  .frase-card-body{background:#2C1F1B;padding:14px 16px}
+  .frase-static{font-size:13px;color:var(--cream);line-height:1.7}
+  .frase-var{font-size:13px;font-weight:bold;color:var(--gold);font-style:italic}
+
+  .block{border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden}
+  .block-head{display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--border);background:#faf9f7}
+  .block-num{width:24px;height:24px;border-radius:50%;background:var(--brown);color:var(--cream);font-size:11px;font-weight:bold;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .block-title{font-size:13px;font-weight:bold;color:var(--brown)}
+  .block-body{padding:16px 18px}
+  .myth-list{display:flex;flex-direction:column;gap:8px}
+  .myth-item{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;background:#faf9f7;border-radius:6px}
+  .mx{color:#A32D2D;font-weight:bold;font-size:13px;flex-shrink:0}
+  .mt{font-size:13px;color:var(--soft);line-height:1.4}
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .vc{padding:10px 12px;background:#faf9f7;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;font-size:12px;color:var(--soft);font-style:italic;line-height:1.5}
+  .emotion-row{display:flex;flex-wrap:wrap;gap:6px}
+  .ec{font-size:11px;font-weight:bold;padding:3px 10px;border-radius:20px;background:var(--amber-bg);color:var(--amber-text);border:1px solid #EF9F27}
+  .bio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .bio-card{padding:14px;background:var(--cream-light);border-radius:6px}
+  .bio-num{font-size:22px;font-weight:bold;color:var(--gold);margin-bottom:6px}
+  .bio-label{font-size:12px;font-weight:bold;color:var(--brown);margin-bottom:4px}
+  .bio-desc{font-size:11px;color:var(--soft);line-height:1.45}
+  .cycle-box{background:var(--cream-light);border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 6px 6px 0;font-size:13px;color:var(--soft);line-height:1.65;margin-bottom:12px}
+  .cycle-box strong{color:var(--text)}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);border-radius:6px;overflow:hidden}
+  .flow-step{padding:12px 8px;background:var(--gray);text-align:center}
+  .flow-step:last-child{background:var(--brown)}
+  .fl{font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;color:var(--gold);margin-bottom:4px}
+  .ft{font-size:11px;color:var(--soft);line-height:1.3}
+  .flow-step:last-child .ft{color:var(--cream)}
+  .dif-box{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:16px}
+  .dif-head{background:var(--brown);padding:14px 18px;text-align:center}
+  .dif-head-title{font-size:15px;font-weight:bold;color:#F5EFE6}
+  .dif-head-sub{font-size:12px;color:var(--gold);margin-top:4px;font-style:italic}
+  .dif-table{width:100%;border-collapse:collapse}
+  .dif-table th{font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;padding:10px 16px;text-align:left}
+  .dif-table th:first-child{background:var(--gray);color:#888}
+  .dif-table th:last-child{background:var(--cream);color:var(--brown)}
+  .dif-table td{font-size:12px;padding:10px 16px;border-top:1px solid var(--border);vertical-align:top}
+  .dif-table td:first-child{color:var(--soft)}
+  .dif-table td:last-child{color:var(--brown);font-weight:bold}
+  .dif-frase{padding:14px 18px;background:var(--cream);text-align:center;border-top:1px solid var(--gold);font-size:13px;color:var(--brown);font-weight:bold;font-style:italic}
+  .mech-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:10px}
+  .mech-top{padding:10px 14px;background:var(--gray);font-size:12px;font-weight:bold;color:var(--brown)}
+  .mech-body{padding:10px 14px;font-size:12px;color:var(--soft);line-height:1.5;border-top:1px solid var(--border)}
+  .resultados-box{background:var(--cream);border:1px solid var(--gold);border-radius:6px;padding:16px 18px;margin-top:12px}
+  .resultados-title{font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:12px}
+  .r-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+  .r-item:last-child{margin-bottom:0}
+  .r-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:4px}
+  .r-text{font-size:12px;color:var(--brown);font-weight:bold;line-height:1.4}
+  .dont-box{margin-top:12px;padding:12px 14px;border:1px solid #F7C1C1;background:var(--red-bg);border-radius:6px}
+  .dont-title{font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;color:#A32D2D;margin-bottom:6px}
+  .dont-item{font-size:12px;color:var(--red-text);line-height:1.6;padding-left:14px;position:relative}
+  .dont-item::before{content:'✕';position:absolute;left:0;font-size:10px}
+  .benefit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .benefit-item{display:flex;gap:8px;align-items:flex-start;padding:9px 12px;background:#faf9f7;border-radius:6px}
+  .bdot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:3px}
+  .btext{font-size:12px;color:var(--soft);line-height:1.4}
+  .divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+  .footer{margin-top:32px;text-align:center;font-size:11px;color:#bbb;padding-top:16px;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Ficha de parámetro · Zemits VeraFace · UV Pigmentación · v1</div>
+  <div class="product-name">TONE ORIGIN PROTOCOL™</div>
+  <div class="product-sub">Regulación de la señal biológica que determina el tono de la piel.</div>
+  <div class="product-sub">Acción sobre el origen del desequilibrio cromático dérmico — no sobre su consecuencia visible.</div>
+  <div class="product-concept">No tratamos la mancha. Regulamos la señal que la crea.</div>
+  <hr class="divider">
+  <div class="hero-title">TU MANCHA NO EMPEZÓ EN LA SUPERFICIE.<br><span class="acc">POR ESO NO DESAPARECE EN LA SUPERFICIE.</span></div>
+  <div class="hero-sub">El origen está más adentro. Y ahí es donde actúa Yadala.</div>
+  <div class="badges">
+    <span class="badge b-prev">PREVENT</span>
+    <span class="badge b-rec">RECOVER</span>
+    <span class="badge b-recl">RECLAIM</span>
+    <span class="badge b-param">UV Pigmentación · Más oscuro = más atención</span>
+  </div>
+</div>
+
+<!-- SEÑAL BOX -->
+<div class="signal-box">
+  <div class="signal-label">El origen del tono — lo que realmente ocurre</div>
+  <div class="signal-grid">
+    <div class="signal-col-head left">Lo que ves</div>
+    <div class="signal-col-head right">Lo que ocurre realmente</div>
+    <div class="signal-row">
+      <div class="signal-cell left">Mancha</div>
+      <div class="signal-cell right">Señal pigmentaria activa</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-cell left">Pigmento visible</div>
+      <div class="signal-cell right">Estrés oxidativo persistente</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-cell left">Tono desigual</div>
+      <div class="signal-cell right">Melanocito sobreestimulado</div>
+    </div>
+    <div class="signal-row">
+      <div class="signal-cell left">Manchas que vuelven</div>
+      <div class="signal-cell right">Señal que nadie ha apagado</div>
+    </div>
+  </div>
+  <div class="signal-master">
+    <div class="signal-master-l1">EL PROBLEMA NO ES LA MANCHA.</div>
+    <div class="signal-master-l2">EL PROBLEMA ES LA SEÑAL QUE SIGUE CREÁNDOLA.</div>
+  </div>
+</div>
+
+<!-- CABINA -->
+<div class="cabina">
+  <div class="cab-top">Frase de cabina — usa con la imagen UV en mano</div>
+  <div class="cab-body"><div class="cab-quote">"Lo que ves en UV no son solo las manchas que tienes. Son también las que están empezando a formarse. La mayoría de tratamientos actúan cuando ya son visibles. Yadala trabaja cuando la señal todavía puede regularse. Por eso actuamos sobre el origen, no solo sobre la superficie."</div></div>
+  <div class="cab-foot">No tratamos la mancha. Regulamos la señal que la crea.</div>
+</div>
+
+<!-- FRASES -->
+<div class="frase-section">
+  <div class="frase-title">Frase de presentación del protocolo — adaptar según el problema detectado</div>
+
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 01 — Señal pigmentaria activa</div>
+      <div class="frase-card-when">Usar cuando: manchas actuales visibles · tono desigual · hiperpigmentación post-inflamatoria</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel muestra <span class="frase-var">una señal pigmentaria activa — el analizador detecta acumulaciones de melanina donde el melanocito está produciendo por encima de su nivel fisiológico</span>. Vamos a activar el protocolo TONE ORIGIN PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">regular la señal que activa la producción excesiva de pigmento y reducir progresivamente la mancha visible desde su origen biológico</span>."</div>
+    </div>
+  </div>
+
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 02 — Pigmento latente en profundidad</div>
+      <div class="frase-card-when">Usar cuando: el analizador UV revela acumulaciones aún no visibles en superficie</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel presenta <span class="frase-var">pigmento latente en capas profundas — manchas que aún no son visibles en superficie pero que el analizador ya detecta activas en el tejido</span>. Vamos a activar el protocolo TONE ORIGIN PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">regular la señal oxidativa antes de que el pigmento emerja — actuando cuando todavía puede regularse</span>."</div>
+    </div>
+  </div>
+
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 03 — Fotodaño acumulado con señal activa</div>
+      <div class="frase-card-when">Usar cuando: manchas solares + pigmento latente + tono irregular por exposición acumulada</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel presenta <span class="frase-var">estrés oxidativo acumulado con señal pigmentaria activa — el daño de la exposición solar ha activado melanocitos que siguen produciendo pigmento aunque no haya exposición directa</span>. Vamos a activar el protocolo TONE ORIGIN PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">neutralizar el estímulo oxidativo que mantiene activa la señal pigmentaria y regular el tono desde su origen biológico</span>."</div>
+    </div>
+  </div>
+
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 04 — Caso mixto</div>
+      <div class="frase-card-when">Usar cuando: mancha visible + pigmento latente + renovación lenta</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel presenta <span class="frase-var">señal pigmentaria activa en múltiples niveles — mancha visible, pigmento latente en profundidad y renovación celular enlentecida que lo mantiene acumulado</span>. Vamos a activar el protocolo TONE ORIGIN PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">actuar sobre los tres factores a la vez: regular la señal, frenar el pigmento latente y activar la renovación que lo elimina progresivamente</span>."</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">1</div><div class="block-title">Lo que te han contado sobre las manchas</div></div>
+  <div class="block-body"><div class="myth-list">
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">Las manchas solo salen con el sol — si no me bronceo, no me salen.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">Los despigmentantes fuertes las eliminan rápido y sin problema.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">Si uso SPF50 ya estoy protegida y no necesito nada más.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">Las manchas que ya tengo no se pueden mejorar con cosmética.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">La hiperpigmentación es hormonal y no tiene tratamiento cosmético eficaz.</span></div>
+  </div></div>
+</div>
+
+<!-- 2 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">2</div><div class="block-title">Lo que la mayoría de clientas siente</div></div>
+  <div class="block-body">
+    <div class="voice-grid">
+      <div class="vc">"Tengo manchas post-inflamatorias de brotes de acné que no desaparecen aunque hayan pasado meses."</div>
+      <div class="vc">"Las manchas del embarazo o los anticonceptivos siguen ahí — nadie me ha dicho qué hacer."</div>
+      <div class="vc">"El tono de mi cara es desigual y el maquillaje no lo tapa bien."</div>
+      <div class="vc">"He usado despigmentantes y me han irritado la piel sin mejorar la mancha."</div>
+      <div class="vc">"Me envejece más de lo que me corresponde y no sé por qué."</div>
+      <div class="vc">"Miedo a que sigan apareciendo más manchas aunque me cuide."</div>
+    </div>
+    <div class="emotion-row">
+      <span class="ec">Inseguridad con el tono</span><span class="ec">Frustración con tratamientos que irritan</span><span class="ec">Miedo a seguir envejeciendo</span><span class="ec">Complejo con el maquillaje</span><span class="ec">Lucha contra algo invisible</span>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">3</div><div class="block-title">Lo que realmente ocurre — la realidad biológica</div></div>
+  <div class="block-body"><div class="bio-grid">
+    <div class="bio-card">
+      <div class="bio-num">01</div>
+      <div class="bio-label">Pigmento latente en profundidad</div>
+      <div class="bio-desc">El analizador UV revela acumulaciones de pigmento que aún no son visibles en superficie. Son manchas futuras que ya están activas en el tejido. Lo que emerge mañana está depositado hoy.</div>
+    </div>
+    <div class="bio-card">
+      <div class="bio-num">02</div>
+      <div class="bio-label">Melanocito sobreestimulado</div>
+      <div class="bio-desc">El estrés oxidativo y la inflamación activan la producción excesiva de melanina. La mancha es la consecuencia visible de una señal que sigue activa. No es un problema de pigmento — es un problema de la señal que lo activa.</div>
+    </div>
+    <div class="bio-card">
+      <div class="bio-num">03</div>
+      <div class="bio-label">Renovación epidérmica enlentecida</div>
+      <div class="bio-desc">Cuando la renovación celular disminuye, el pigmento permanece más tiempo en la piel y se acumula progresivamente. La mancha no desaparece porque el mecanismo que debería eliminarla está enlentecido.</div>
+    </div>
+  </div></div>
+</div>
+
+<!-- 4 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">4</div><div class="block-title">Por qué la mancha vuelve aunque se trate</div></div>
+  <div class="block-body">
+    <div class="cycle-box">Los despigmentantes fuertes aclaran el pigmento visible — pero <strong>no apagan la señal oxidativa que lo activa</strong>. El melanocito sigue sobreestimulado. <strong>La mancha vuelve porque su origen no ha sido tratado</strong> — solo su consecuencia visible.</div>
+    <div class="flow">
+      <div class="flow-step"><div class="fl">Lo que ves</div><div class="ft">Mancha · tono desigual</div></div>
+      <div class="flow-step"><div class="fl">Lo que lo provoca</div><div class="ft">Señal oxidativa + melanocito sobreestimulado</div></div>
+      <div class="flow-step"><div class="fl">Por qué vuelve</div><div class="ft">Solo se trató el pigmento · no la señal</div></div>
+      <div class="flow-step"><div class="fl">La solución</div><div class="ft">Regular el origen biológico de la señal</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIFERENCIA -->
+<div class="dif-box">
+  <div class="dif-head"><div class="dif-head-title">LA DIFERENCIA</div><div class="dif-head-sub">No tratamos la mancha. TONE ORIGIN PROTOCOL™ regula la señal que la crea.</div></div>
+  <table class="dif-table">
+    <thead><tr><th>Otros tratamientos</th><th>TONE ORIGIN PROTOCOL™</th></tr></thead>
+    <tbody>
+      <tr><td>Aclaran el pigmento visible</td><td>Regulan la señal que lo activa</td></tr>
+      <tr><td>Actúan cuando la mancha ya es visible</td><td>Actúan cuando la señal todavía puede regularse</td></tr>
+      <tr><td>No actúan sobre el pigmento latente</td><td>Detectan y frenan el pigmento antes de que emerja</td></tr>
+      <tr><td>La mancha vuelve porque la señal sigue activa</td><td>La señal se regula — la mancha tiene menos razón de volver</td></tr>
+    </tbody>
+  </table>
+  <div class="dif-frase">"No tratamos la mancha. Regulamos la señal que la crea."</div>
+</div>
+
+<!-- 5 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">5</div><div class="block-title">Cómo actúa TONE ORIGIN PROTOCOL™</div></div>
+  <div class="block-body">
+    <div class="mech-card"><div class="mech-top">Sobre la señal oxidativa</div><div class="mech-body">Los ingredientes activos neutralizan el estrés oxidativo que activa los melanocitos. No blanquean — apagan el estímulo que produce el exceso. La señal se regula en origen, no en la superficie.</div></div>
+    <div class="mech-card"><div class="mech-top">Sobre el pigmento latente</div><div class="mech-body">La acción sobre el entorno dérmico contribuye a que el pigmento profundo detectado por el UV no emerja, o lo haga con menor intensidad. Actuar cuando la señal todavía puede regularse.</div></div>
+    <div class="mech-card"><div class="mech-top">Sobre la renovación epidérmica</div><div class="mech-body">La activación suave de la renovación celular lleva el pigmento acumulado hacia la superficie para su eliminación natural — sin irritar, sin comprometer la barrera, sin efecto rebote.</div></div>
+    <div class="resultados-box">
+      <div class="resultados-title">Resultados clave</div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Tono más uniforme y luminoso progresivamente.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Manchas visiblemente reducidas en 2 a 8 semanas según intensidad.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Pigmento latente UV reducible y verificable en el siguiente escaneo.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Luminosidad recuperada sin efecto blanqueante artificial.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Menos formación de manchas nuevas.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">La imagen UV mejora antes de que el cambio sea visible en el espejo.</div></div>
+    </div>
+    <div class="dont-box">
+      <div class="dont-title">No decir nunca — límites del claim</div>
+      <div class="dont-item">"Elimina las manchas de forma definitiva." — Las reduce y previene progresivamente.</div>
+      <div class="dont-item">"Blanquea la piel." — Regula el tono desde su origen, no lo aclara artificialmente.</div>
+      <div class="dont-item">"Funciona como un despigmentante químico." — Es un regulador del entorno oxidativo.</div>
+      <div class="dont-item">"Elimina el pigmento latente." — Contribuye a frenarlo y reducirlo progresivamente.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">6</div><div class="block-title">Beneficios visibles — lo que la clienta nota y el analizador confirma</div></div>
+  <div class="block-body"><div class="benefit-grid">
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Tono más uniforme y luminoso progresivamente</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Manchas visiblemente reducidas en 2 a 8 semanas</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Pigmento latente UV verificable en el siguiente escaneo</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Luminosidad recuperada sin efecto blanqueante</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Menos formación de manchas nuevas</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">La imagen UV mejora antes de que se vea en el espejo</div></div>
+  </div></div>
+</div>
+
+<div class="footer">TONE ORIGIN PROTOCOL™ · Yadala · Junio 2026</div>
+</body>
+</html>

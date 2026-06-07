@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CELL FLOW PROTOCOL™ — Yadala</title>
+<style>
+  :root{--brown:#3E2F2B;--gold:#C6A56B;--cream:#F5EFE6;--cream-light:#FAF6F1;--text:#2A2A2A;--soft:#555;--border:#E0DDD8;--gray:#F5F5F3;--red-bg:#FCEBEB;--red-text:#791F1F;--amber-bg:#FAEEDA;--amber-text:#633806;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,sans-serif;font-size:14px;color:var(--text);background:#fff;max-width:900px;margin:0 auto;padding:40px 32px}
+  .hero{border-left:6px solid var(--brown);padding:28px 32px;margin-bottom:20px;background:var(--cream-light);border-radius:0 8px 8px 0}
+  .hero-tag{font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .product-name{font-size:24px;font-weight:bold;color:var(--brown);margin-bottom:4px}
+  .product-sub{font-size:13px;color:var(--gold);font-style:italic;margin-bottom:2px}
+  .product-concept{font-size:14px;font-weight:bold;color:var(--brown);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+  hr.divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+  .hero-title{font-size:24px;font-weight:bold;color:var(--text);line-height:1.2;margin-bottom:6px}
+  .hero-title .acc{color:var(--brown)}
+  .hero-sub{font-size:13px;color:#777;font-style:italic;margin-bottom:14px}
+  .badges{display:flex;gap:8px;flex-wrap:wrap}
+  .badge{font-size:11px;font-weight:bold;padding:3px 12px;border-radius:20px}
+  .b-rec{background:#EAF3DE;color:#27500A}.b-recl{background:#FBEAF0;color:#72243E}.b-param{background:#f0ede8;color:#888;border:1px solid var(--border)}
+
+  /* FLOW POS BOX */
+  .flow-pos{background:var(--brown);border-radius:8px;padding:24px 28px;margin-bottom:20px}
+  .flow-pos-label{font-size:10px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .flow-pos-main{font-size:18px;font-weight:bold;color:var(--cream);line-height:1.5;margin-bottom:12px}
+  .flow-pos-sub{font-size:13px;color:rgba(245,239,230,.6);font-style:italic;margin-bottom:4px}
+  .flow-pos-tagb{font-size:14px;font-weight:bold;color:var(--gold);font-style:italic}
+
+  /* POTENCIADOR BOX */
+  .potenciador-box{background:var(--cream);border:2px solid var(--gold);border-radius:8px;padding:20px 24px;margin:12px 0}
+  .potenciador-title{font-size:13px;font-weight:bold;color:var(--brown);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+  .potenciador-list{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+  .potenciador-item{font-size:13px;color:var(--soft);padding-left:14px;position:relative;line-height:1.5}
+  .potenciador-item::before{content:'·';position:absolute;left:0;color:var(--gold);font-weight:bold}
+  .potenciador-conclusion{font-size:14px;font-weight:bold;color:var(--brown);line-height:1.5;padding-top:10px;border-top:1px solid var(--border)}
+
+  .cabina{margin-bottom:20px;border-radius:8px;overflow:hidden}
+  .cab-top{background:var(--brown);padding:10px 20px;font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.1em;color:var(--gold)}
+  .cab-body{background:#2C1F1B;padding:20px;border-bottom:3px solid var(--gold)}
+  .cab-quote{font-size:15px;color:var(--cream);line-height:1.65;font-style:italic}
+  .cab-foot{background:var(--brown);padding:10px 20px;font-size:12px;color:var(--gold);font-style:italic}
+
+  .frase-section{margin-bottom:20px}
+  .frase-title{font-size:13px;font-weight:bold;color:var(--brown);padding:12px 0 10px;border-bottom:2px solid var(--gold);margin-bottom:12px}
+  .frase-card{border-radius:6px;overflow:hidden;margin-bottom:10px}
+  .frase-card-top{padding:8px 14px;background:var(--gray);border-left:3px solid var(--gold)}
+  .frase-card-version{font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.06em;color:var(--gold)}
+  .frase-card-when{font-size:11px;color:#888;font-style:italic}
+  .frase-card-body{background:#2C1F1B;padding:14px 16px}
+  .frase-static{font-size:13px;color:var(--cream);line-height:1.7}
+  .frase-var{font-size:13px;font-weight:bold;color:var(--gold);font-style:italic}
+
+  .block{border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden}
+  .block-head{display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--border);background:#faf9f7}
+  .block-num{width:24px;height:24px;border-radius:50%;background:var(--brown);color:var(--cream);font-size:11px;font-weight:bold;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .block-title{font-size:13px;font-weight:bold;color:var(--brown)}
+  .block-body{padding:16px 18px}
+  .myth-list{display:flex;flex-direction:column;gap:8px}
+  .myth-item{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;background:#faf9f7;border-radius:6px}
+  .mx{color:#A32D2D;font-weight:bold;font-size:13px;flex-shrink:0}
+  .mt{font-size:13px;color:var(--soft);line-height:1.4}
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .vc{padding:10px 12px;background:#faf9f7;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;font-size:12px;color:var(--soft);font-style:italic;line-height:1.5}
+  .emotion-row{display:flex;flex-wrap:wrap;gap:6px}
+  .ec{font-size:11px;font-weight:bold;padding:3px 10px;border-radius:20px;background:var(--amber-bg);color:var(--amber-text);border:1px solid #EF9F27}
+  .bio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .bio-card{padding:14px;background:var(--cream-light);border-radius:6px}
+  .bio-num{font-size:22px;font-weight:bold;color:var(--gold);margin-bottom:6px}
+  .bio-label{font-size:12px;font-weight:bold;color:var(--brown);margin-bottom:4px}
+  .bio-desc{font-size:11px;color:var(--soft);line-height:1.45}
+  .cycle-box{background:var(--cream-light);border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 6px 6px 0;font-size:13px;color:var(--soft);line-height:1.65;margin-bottom:12px}
+  .cycle-box strong{color:var(--text)}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);border-radius:6px;overflow:hidden}
+  .flow-step{padding:12px 8px;background:var(--gray);text-align:center}
+  .flow-step:last-child{background:var(--brown)}
+  .fl{font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;color:var(--gold);margin-bottom:4px}
+  .ft{font-size:11px;color:var(--soft);line-height:1.3}
+  .flow-step:last-child .ft{color:var(--cream)}
+  .dif-box{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:16px}
+  .dif-head{background:var(--brown);padding:14px 18px;text-align:center}
+  .dif-head-title{font-size:15px;font-weight:bold;color:#F5EFE6}
+  .dif-head-sub{font-size:12px;color:var(--gold);margin-top:4px;font-style:italic}
+  .dif-table{width:100%;border-collapse:collapse}
+  .dif-table th{font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;padding:10px 16px;text-align:left}
+  .dif-table th:first-child{background:var(--gray);color:#888}
+  .dif-table th:last-child{background:var(--cream);color:var(--brown)}
+  .dif-table td{font-size:12px;padding:10px 16px;border-top:1px solid var(--border);vertical-align:top}
+  .dif-table td:first-child{color:var(--soft)}
+  .dif-table td:last-child{color:var(--brown);font-weight:bold}
+  .dif-frase{padding:14px 18px;background:var(--cream);text-align:center;border-top:1px solid var(--gold);font-size:13px;color:var(--brown);font-weight:bold;font-style:italic}
+  .mech-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:10px}
+  .mech-top{padding:10px 14px;background:var(--gray);font-size:12px;font-weight:bold;color:var(--brown)}
+  .mech-body{padding:10px 14px;font-size:12px;color:var(--soft);line-height:1.5;border-top:1px solid var(--border)}
+  .resultados-box{background:var(--cream);border:1px solid var(--gold);border-radius:6px;padding:16px 18px;margin-top:12px}
+  .resultados-title{font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:12px}
+  .r-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+  .r-item:last-child{margin-bottom:0}
+  .r-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:4px}
+  .r-text{font-size:12px;color:var(--brown);font-weight:bold;line-height:1.4}
+  .dont-box{margin-top:12px;padding:12px 14px;border:1px solid #F7C1C1;background:var(--red-bg);border-radius:6px}
+  .dont-title{font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;color:#A32D2D;margin-bottom:6px}
+  .dont-item{font-size:12px;color:var(--red-text);line-height:1.6;padding-left:14px;position:relative}
+  .dont-item::before{content:'✕';position:absolute;left:0;font-size:10px}
+  .benefit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .benefit-item{display:flex;gap:8px;align-items:flex-start;padding:9px 12px;background:#faf9f7;border-radius:6px}
+  .bdot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:3px}
+  .btext{font-size:12px;color:var(--soft);line-height:1.4}
+  .divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+  .footer{margin-top:32px;text-align:center;font-size:11px;color:#bbb;padding-top:16px;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Ficha de parámetro · Zemits VeraFace · Área Marrón · v1</div>
+  <div class="product-name">CELL FLOW PROTOCOL™</div>
+  <div class="product-sub">Restauración del movimiento biológico que oxigena, drena y regenera el tejido.</div>
+  <div class="product-sub">Reactivación del flujo biológico que sostiene la vitalidad visible del rostro.</div>
+  <div class="product-concept">El problema no es que tu piel necesite más. El problema es que ha dejado de mover lo que ya tiene.</div>
+  <hr class="divider">
+  <div class="hero-title">EL PROBLEMA NO ES QUE TU PIEL NECESITE MÁS.<br><span class="acc">EL PROBLEMA ES QUE HA DEJADO DE MOVER LO QUE YA TIENE.</span></div>
+  <div class="hero-sub">Cuando el flujo se reactiva, la vitalidad vuelve.</div>
+  <div class="badges">
+    <span class="badge b-rec">RECOVER</span>
+    <span class="badge b-recl">RECLAIM</span>
+    <span class="badge b-param">Área Marrón · Mayor % = mejor metabolismo</span>
+  </div>
+</div>
+
+<!-- POSICIONAMIENTO -->
+<div class="flow-pos">
+  <div class="flow-pos-label">El verdadero posicionamiento de este protocolo</div>
+  <div class="flow-pos-main">No estás vendiendo drenaje ni circulación ni oxigenación.<br>Estás vendiendo la recuperación de la vitalidad visible del rostro.</div>
+  <div class="flow-pos-sub">Esos son mecanismos.</div>
+  <div class="flow-pos-tagb">CELL FLOW PROTOCOL™ reactiva el terreno biológico antes de construir sobre él.</div>
+</div>
+
+<!-- POTENCIADOR -->
+<div class="potenciador-box">
+  <div class="potenciador-title">Por qué empezamos aquí</div>
+  <div class="potenciador-list">
+    <div class="potenciador-item">La oxigenación disminuye — el tejido no recibe lo que necesita</div>
+    <div class="potenciador-item">El drenaje se reduce — los metabolitos se acumulan</div>
+    <div class="potenciador-item">La respuesta celular se ralentiza — los tratamientos no hacen su efecto completo</div>
+  </div>
+  <div class="potenciador-conclusion">Por eso muchos tratamientos actúan sobre una piel que aún no está preparada para responder.<br>CELL FLOW PROTOCOL™ reactiva el terreno biológico antes de construir sobre él.</div>
+</div>
+
+<!-- CABINA -->
+<div class="cabina">
+  <div class="cab-top">Frase de cabina — usa con el informe en la mano</div>
+  <div class="cab-body"><div class="cab-quote">"Lo que ves aquí no es envejecimiento. Es lentitud biológica. El tejido sigue teniendo capacidad de responder, pero necesita volver a activarse. Cuando recuperamos el flujo, la piel vuelve a comportarse como una piel que responde."</div></div>
+  <div class="cab-foot">No necesita más. Necesita volver a moverse.</div>
+</div>
+
+<!-- FRASES -->
+<div class="frase-section">
+  <div class="frase-title">Frase de presentación del protocolo — adaptar según el problema detectado</div>
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 01 — Metabolismo celular enlentecido</div>
+      <div class="frase-card-when">Usar cuando: tono apagado · cara sin vitalidad · piel que no responde a tratamientos</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel está en un estado de <span class="frase-var">metabolismo celular enlentecido — las células tardan más en renovarse y en responder, y el tejido ha perdido la vitalidad visible que el flujo activo produce</span>. Vamos a activar el protocolo CELL FLOW PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">reactivar el metabolismo celular y recuperar la vitalidad visible del rostro desde su base biológica</span>."</div>
+    </div>
+  </div>
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 02 — Microcirculación reducida</div>
+      <div class="frase-card-when">Usar cuando: tono grisáceo · cara cansada aunque haya descanso · piel apagada</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel presenta <span class="frase-var">microcirculación reducida — menos oxígeno y nutrientes llegan al tejido, y el resultado es una piel que se ve cansada aunque la persona no lo esté</span>. Vamos a activar el protocolo CELL FLOW PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">activar la microcirculación y devolver al tejido el oxígeno y los nutrientes que necesita para recuperar su tono y luminosidad</span>."</div>
+    </div>
+  </div>
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 03 — Drenaje reducido</div>
+      <div class="frase-card-when">Usar cuando: cara hinchada · congestionada · óvalo menos definido</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel presenta <span class="frase-var">drenaje reducido — los fluidos y metabolitos permanecen más tiempo del necesario en el tejido, generando congestión y pérdida de definición facial</span>. Vamos a activar el protocolo CELL FLOW PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">reactivar el drenaje natural del tejido y recuperar la definición y ligereza del contorno facial</span>."</div>
+    </div>
+  </div>
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 04 — Caso mixto</div>
+      <div class="frase-card-when">Usar cuando: metabolismo + circulación + drenaje comprometidos simultáneamente</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel presenta <span class="frase-var">lentitud biológica en múltiples niveles — metabolismo enlentecido, microcirculación reducida y drenaje insuficiente actuando simultáneamente</span>. Vamos a activar el protocolo CELL FLOW PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">reactivar el flujo biológico completo y recuperar la vitalidad visible que el movimiento interno produce</span>."</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">1</div><div class="block-title">Lo que te han contado sobre la cara cansada</div></div>
+  <div class="block-body"><div class="myth-list">
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">La cara cansada es por no dormir bien — con más sueño se soluciona.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">El drenaje linfático facial solo sirve para los que tienen mucha retención.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">La hinchazón de la cara es normal, a todas nos pasa por las mañanas.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">La piel grisácea es de piel seca — con crema es suficiente.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">Si no tengo arrugas, mi piel no necesita tratamientos de metabolismo.</span></div>
+  </div></div>
+</div>
+
+<!-- 2 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">2</div><div class="block-title">Lo que la mayoría de clientas siente</div></div>
+  <div class="block-body">
+    <div class="voice-grid">
+      <div class="vc">"Tengo la cara hinchada o congestionada aunque haya dormido bien."</div>
+      <div class="vc">"El tono está apagado y grisáceo — sin luminosidad aunque me cuide."</div>
+      <div class="vc">"El óvalo facial pierde definición progresivamente y no sé por qué."</div>
+      <div class="vc">"He probado tratamientos que no hacen efecto — la piel no responde."</div>
+      <div class="vc">"Me preguntan si estoy cansada aunque me encuentre perfectamente."</div>
+      <div class="vc">"Salgo de la cabina igual que entré — los tratamientos no me hacen nada."</div>
+    </div>
+    <div class="emotion-row">
+      <span class="ec">Frustración con tratamientos que no funcionan</span><span class="ec">Desconexión entre cómo se siente y cómo se ve</span><span class="ec">Cansancio de verse apagada</span><span class="ec">Piel que no responde</span>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">3</div><div class="block-title">Lo que realmente ocurre — la realidad biológica</div></div>
+  <div class="block-body"><div class="bio-grid">
+    <div class="bio-card"><div class="bio-num">01</div><div class="bio-label">Metabolismo celular enlentecido</div><div class="bio-desc">Las células tardan más en renovarse y en responder. El tejido pierde la capacidad de reaccionar a los estímulos — incluyendo los tratamientos. Una piel con metabolismo lento no está envejecida — ha dejado de moverse.</div></div>
+    <div class="bio-card"><div class="bio-num">02</div><div class="bio-label">Microcirculación reducida</div><div class="bio-desc">Sin bomba mecánica sobre capilares la circulación es lenta, el oxígeno no llega y los nutrientes no alcanzan el tejido. La piel se ve apagada porque literalmente no está oxigenada — no porque esté envejecida.</div></div>
+    <div class="bio-card"><div class="bio-num">03</div><div class="bio-label">Drenaje reducido</div><div class="bio-desc">Sin contracciones activas los vasos linfáticos no se comprimen. El líquido intersticial se acumula. Cara hinchada, sin definición y congestionada — no por retención sistémica, sino por falta de movimiento local.</div></div>
+  </div></div>
+</div>
+
+<!-- 4 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">4</div><div class="block-title">Por qué la vitalidad no vuelve aunque se descanse</div></div>
+  <div class="block-body">
+    <div class="cycle-box">El descanso mejora temporalmente pero no activa la microcirculación ni el drenaje. Las cremas nutren la superficie pero no llegan donde ocurre el problema. <strong>Ningún tratamiento actúa bien sobre una piel que no está preparada para responder</strong> — y una piel con flujo lento no puede aprovechar lo que recibe.</div>
+    <div class="flow">
+      <div class="flow-step"><div class="fl">Lo que ves</div><div class="ft">Cara cansada · apagada · hinchada</div></div>
+      <div class="flow-step"><div class="fl">Lo que lo provoca</div><div class="ft">Metabolismo + circulación + drenaje lentos</div></div>
+      <div class="flow-step"><div class="fl">Por qué persiste</div><div class="ft">El descanso no activa el flujo</div></div>
+      <div class="flow-step"><div class="fl">La solución</div><div class="ft">Reactivar el flujo para que responda</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIFERENCIA -->
+<div class="dif-box">
+  <div class="dif-head"><div class="dif-head-title">LA DIFERENCIA</div><div class="dif-head-sub">No añadimos más. CELL FLOW PROTOCOL™ reactiva lo que ya tiene pero ha dejado de mover.</div></div>
+  <table class="dif-table">
+    <thead><tr><th>Otros tratamientos</th><th>CELL FLOW PROTOCOL™</th></tr></thead>
+    <tbody>
+      <tr><td>Nutren la superficie</td><td>Reactivan el metabolismo que lo aprovecha</td></tr>
+      <tr><td>Actúan sobre piel que no responde</td><td>Preparan el tejido para responder</td></tr>
+      <tr><td>Drenaje manual temporal</td><td>Microcontracciones que activan el drenaje desde dentro</td></tr>
+      <tr><td>Resultado que dura horas</td><td>Metabolismo progresivamente más activo</td></tr>
+    </tbody>
+  </table>
+  <div class="dif-frase">"No necesita más. Necesita volver a moverse."</div>
+</div>
+
+<!-- 5 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">5</div><div class="block-title">Cómo actúa CELL FLOW PROTOCOL™</div></div>
+  <div class="block-body">
+    <div class="mech-card"><div class="mech-top">Sobre el metabolismo celular</div><div class="mech-body">El protocolo activa el entorno biológico que favorece la respuesta celular. Las células reciben el estímulo de renovarse y reaccionar. El tejido vuelve a comportarse como una piel activa.</div></div>
+    <div class="mech-card"><div class="mech-top">Sobre la microcirculación</div><div class="mech-body">La hiperemia reactiva controlada que produce el protocolo activa el flujo sanguíneo capilar. Más oxígeno, más nutrientes, menos metabolitos acumulados. La piel recibe lo que necesita donde lo necesita.</div></div>
+    <div class="mech-card"><div class="mech-top">Sobre el drenaje</div><div class="mech-body">Las microcontracciones musculares actúan como bomba mecánica sobre los vasos linfáticos superficiales. El líquido intersticial se evacúa. Equivalente endógeno al drenaje manual — activado desde dentro.</div></div>
+    <div class="resultados-box">
+      <div class="resultados-title">Resultados clave</div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Glow inmediato observable en cabina — tono más vivo y descansado.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Cara menos hinchada y más definida desde las primeras sesiones.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Oxigenación visible que dura más allá de la sesión.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Óvalo con mejor definición — mandíbula más marcada.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Piel más receptiva — los siguientes protocolos hacen más efecto.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Mejora verificable en Área Marrón en el siguiente escaneo.</div></div>
+    </div>
+    <div class="dont-box">
+      <div class="dont-title">No decir nunca — límites del claim</div>
+      <div class="dont-item">"Equivale a un drenaje linfático manual." — Es un mecanismo endógeno distinto.</div>
+      <div class="dont-item">"Elimina la hinchazón de forma definitiva." — La reduce progresivamente con continuidad.</div>
+      <div class="dont-item">"Oxigena como la oxigenoterapia." — Es una activación biológica endógena, no aporte externo.</div>
+      <div class="dont-item">"Activa el metabolismo sistémico." — Activa el metabolismo cutáneo local, no el general.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">6</div><div class="block-title">Beneficios visibles — lo que la clienta nota y el analizador confirma</div></div>
+  <div class="block-body"><div class="benefit-grid">
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Glow inmediato observable en cabina desde la primera sesión</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Cara menos hinchada y más definida</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Tono más luminoso y vivo</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Óvalo con mejor definición progresiva</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Piel más receptiva — los tratamientos posteriores hacen más efecto</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Mejora verificable en Área Marrón en el siguiente escaneo</div></div>
+  </div></div>
+</div>
+
+<div class="footer">CELL FLOW PROTOCOL™ · Yadala · Junio 2026</div>
+</body>
+</html>

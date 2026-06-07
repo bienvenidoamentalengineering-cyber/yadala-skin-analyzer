@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYDRO MEMORY PROTOCOL™ — Yadala</title>
+<style>
+  :root{--brown:#3E2F2B;--gold:#C6A56B;--cream:#F5EFE6;--cream-light:#FAF6F1;--text:#2A2A2A;--soft:#555;--border:#E0DDD8;--gray:#F5F5F3;--red-bg:#FCEBEB;--red-text:#791F1F;--amber-bg:#FAEEDA;--amber-text:#633806;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,sans-serif;font-size:14px;color:var(--text);background:#fff;max-width:900px;margin:0 auto;padding:40px 32px}
+  .hero{border-left:6px solid var(--brown);padding:28px 32px;margin-bottom:20px;background:var(--cream-light);border-radius:0 8px 8px 0}
+  .hero-tag{font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .product-name{font-size:24px;font-weight:bold;color:var(--brown);margin-bottom:4px}
+  .product-sub{font-size:13px;color:var(--gold);font-style:italic;margin-bottom:2px}
+  .product-concept{font-size:14px;font-weight:bold;color:var(--brown);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+  hr.divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+  .hero-title{font-size:28px;font-weight:bold;color:var(--text);line-height:1.2;margin-bottom:6px}
+  .hero-title .acc{color:var(--brown)}
+  .hero-sub{font-size:13px;color:#777;font-style:italic;margin-bottom:14px}
+  .badges{display:flex;gap:8px;flex-wrap:wrap}
+  .badge{font-size:11px;font-weight:bold;padding:3px 12px;border-radius:20px}
+  .b-prev{background:#E6F1FB;color:#0C447C}.b-rec{background:#EAF3DE;color:#27500A}.b-recl{background:#FBEAF0;color:#72243E}.b-param{background:#f0ede8;color:#888;border:1px solid var(--border)}
+
+  /* HYDRO CONTRAST BOX */
+  .hydro-box{background:var(--brown);border-radius:8px;padding:24px 28px;margin-bottom:20px}
+  .hydro-label{font-size:10px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .hydro-grid{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:start;margin-bottom:16px}
+  .hydro-col{background:rgba(255,255,255,.06);border-radius:6px;padding:14px}
+  .hydro-col.right{background:rgba(198,165,107,.15);border:1px solid rgba(198,165,107,.4)}
+  .hydro-col-title{font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+  .hydro-col.left .hydro-col-title{color:rgba(245,239,230,.5)}
+  .hydro-col.right .hydro-col-title{color:var(--gold)}
+  .hydro-item{font-size:12px;margin-bottom:6px;padding-left:10px;position:relative}
+  .hydro-item::before{content:'·';position:absolute;left:0}
+  .hydro-col.left .hydro-item{color:rgba(245,239,230,.55)}
+  .hydro-col.right .hydro-item{color:var(--cream)}
+  .hydro-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--gold);padding-top:30px}
+  .hydro-master{text-align:center;padding-top:16px;border-top:1px solid rgba(198,165,107,.3)}
+  .hydro-master-text{font-size:15px;font-weight:bold;color:var(--gold);line-height:1.5}
+
+  .cabina{margin-bottom:20px;border-radius:8px;overflow:hidden}
+  .cab-top{background:var(--brown);padding:10px 20px;font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.1em;color:var(--gold)}
+  .cab-body{background:#2C1F1B;padding:20px;border-bottom:3px solid var(--gold)}
+  .cab-quote{font-size:15px;color:var(--cream);line-height:1.65;font-style:italic}
+  .cab-foot{background:var(--brown);padding:10px 20px;font-size:12px;color:var(--gold);font-style:italic}
+
+  .frase-section{margin-bottom:20px}
+  .frase-title{font-size:13px;font-weight:bold;color:var(--brown);padding:12px 0 10px;border-bottom:2px solid var(--gold);margin-bottom:12px}
+  .frase-card{border-radius:6px;overflow:hidden;margin-bottom:10px}
+  .frase-card-top{padding:8px 14px;background:var(--gray);border-left:3px solid var(--gold)}
+  .frase-card-version{font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.06em;color:var(--gold)}
+  .frase-card-when{font-size:11px;color:#888;font-style:italic}
+  .frase-card-body{background:#2C1F1B;padding:14px 16px}
+  .frase-static{font-size:13px;color:var(--cream);line-height:1.7}
+  .frase-var{font-size:13px;font-weight:bold;color:var(--gold);font-style:italic}
+
+  .block{border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden}
+  .block-head{display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--border);background:#faf9f7}
+  .block-num{width:24px;height:24px;border-radius:50%;background:var(--brown);color:var(--cream);font-size:11px;font-weight:bold;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .block-title{font-size:13px;font-weight:bold;color:var(--brown)}
+  .block-body{padding:16px 18px}
+  .myth-list{display:flex;flex-direction:column;gap:8px}
+  .myth-item{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;background:#faf9f7;border-radius:6px}
+  .mx{color:#A32D2D;font-weight:bold;font-size:13px;flex-shrink:0}
+  .mt{font-size:13px;color:var(--soft);line-height:1.4}
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .vc{padding:10px 12px;background:#faf9f7;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;font-size:12px;color:var(--soft);font-style:italic;line-height:1.5}
+  .emotion-row{display:flex;flex-wrap:wrap;gap:6px}
+  .ec{font-size:11px;font-weight:bold;padding:3px 10px;border-radius:20px;background:var(--amber-bg);color:var(--amber-text);border:1px solid #EF9F27}
+  .bio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .bio-card{padding:14px;background:var(--cream-light);border-radius:6px}
+  .bio-num{font-size:22px;font-weight:bold;color:var(--gold);margin-bottom:6px}
+  .bio-label{font-size:12px;font-weight:bold;color:var(--brown);margin-bottom:4px}
+  .bio-desc{font-size:11px;color:var(--soft);line-height:1.45}
+  .cycle-box{background:var(--cream-light);border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 6px 6px 0;font-size:13px;color:var(--soft);line-height:1.65;margin-bottom:12px}
+  .cycle-box strong{color:var(--text)}
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);border-radius:6px;overflow:hidden}
+  .flow-step{padding:12px 8px;background:var(--gray);text-align:center}
+  .flow-step:last-child{background:var(--brown)}
+  .fl{font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;color:var(--gold);margin-bottom:4px}
+  .ft{font-size:11px;color:var(--soft);line-height:1.3}
+  .flow-step:last-child .ft{color:var(--cream)}
+  .dif-box{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:16px}
+  .dif-head{background:var(--brown);padding:14px 18px;text-align:center}
+  .dif-head-title{font-size:15px;font-weight:bold;color:#F5EFE6}
+  .dif-head-sub{font-size:12px;color:var(--gold);margin-top:4px;font-style:italic}
+  .dif-table{width:100%;border-collapse:collapse}
+  .dif-table th{font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;padding:10px 16px;text-align:left}
+  .dif-table th:first-child{background:var(--gray);color:#888}
+  .dif-table th:last-child{background:var(--cream);color:var(--brown)}
+  .dif-table td{font-size:12px;padding:10px 16px;border-top:1px solid var(--border);vertical-align:top}
+  .dif-table td:first-child{color:var(--soft)}
+  .dif-table td:last-child{color:var(--brown);font-weight:bold}
+  .dif-frase{padding:14px 18px;background:var(--cream);text-align:center;border-top:1px solid var(--gold);font-size:13px;color:var(--brown);font-weight:bold;font-style:italic}
+  .mech-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:10px}
+  .mech-top{padding:10px 14px;background:var(--gray);font-size:12px;font-weight:bold;color:var(--brown)}
+  .mech-body{padding:10px 14px;font-size:12px;color:var(--soft);line-height:1.5;border-top:1px solid var(--border)}
+  .resultados-box{background:var(--cream);border:1px solid var(--gold);border-radius:6px;padding:16px 18px;margin-top:12px}
+  .resultados-title{font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:12px}
+  .r-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+  .r-item:last-child{margin-bottom:0}
+  .r-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:4px}
+  .r-text{font-size:12px;color:var(--brown);font-weight:bold;line-height:1.4}
+  .dont-box{margin-top:12px;padding:12px 14px;border:1px solid #F7C1C1;background:var(--red-bg);border-radius:6px}
+  .dont-title{font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:.05em;color:#A32D2D;margin-bottom:6px}
+  .dont-item{font-size:12px;color:var(--red-text);line-height:1.6;padding-left:14px;position:relative}
+  .dont-item::before{content:'✕';position:absolute;left:0;font-size:10px}
+  .benefit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .benefit-item{display:flex;gap:8px;align-items:flex-start;padding:9px 12px;background:#faf9f7;border-radius:6px}
+  .bdot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:3px}
+  .btext{font-size:12px;color:var(--soft);line-height:1.4}
+  .divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+  .footer{margin-top:32px;text-align:center;font-size:11px;color:#bbb;padding-top:16px;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Ficha de parámetro · Zemits VeraFace · UV Hidratación · v1</div>
+  <div class="product-name">HYDRO MEMORY PROTOCOL™</div>
+  <div class="product-sub">Reactivación de la memoria biológica de hidratación de la piel.</div>
+  <div class="product-sub">Restauración de la capacidad endógena de retención hídrica.</div>
+  <div class="product-concept">No aportamos más agua. Ayudamos a que la piel deje de perderla.</div>
+  <hr class="divider">
+  <div class="hero-title">TU PIEL NO ESTÁ SECA.<br><span class="acc">HA OLVIDADO CÓMO RETENER EL AGUA.</span></div>
+  <div class="hero-sub">Y esa memoria puede reactivarse.</div>
+  <div class="badges">
+    <span class="badge b-prev">PREVENT</span>
+    <span class="badge b-rec">RECOVER</span>
+    <span class="badge b-recl">RECLAIM</span>
+    <span class="badge b-param">UV Hidratación · Mayor % = mejor hidratación</span>
+  </div>
+</div>
+
+<!-- HYDRO CONTRAST -->
+<div class="hydro-box">
+  <div class="hydro-label">Hidratación prestada vs hidratación propia</div>
+  <div class="hydro-grid">
+    <div class="hydro-col left">
+      <div class="hydro-col-title">Hidratación prestada</div>
+      <div class="hydro-item">Depende del producto para mantenerse</div>
+      <div class="hydro-item">Dura unas horas</div>
+      <div class="hydro-item">Desaparece al final del día</div>
+      <div class="hydro-item">La piel se vuelve más dependiente</div>
+    </div>
+    <div class="hydro-arrow">→</div>
+    <div class="hydro-col right">
+      <div class="hydro-col-title">Hidratación propia</div>
+      <div class="hydro-item">La piel vuelve a retener su propio agua</div>
+      <div class="hydro-item">La hidratación dura más allá de la sesión</div>
+      <div class="hydro-item">La función mejora progresivamente</div>
+      <div class="hydro-item">Autonomía hídrica recuperada</div>
+    </div>
+  </div>
+  <div class="hydro-master">
+    <div class="hydro-master-text">La piel depende de la crema porque ha perdido su mecanismo interno de retención.<br>Yadala no añade agua. Reactiva la capacidad de retenerla.</div>
+  </div>
+</div>
+
+<!-- CABINA -->
+<div class="cabina">
+  <div class="cab-top">Frase de cabina — usa con el informe en la mano</div>
+  <div class="cab-body"><div class="cab-quote">"Tu piel no tiene falta de agua. Tiene dificultad para conservarla. Por eso sigues necesitando más y más hidratantes. El objetivo no es añadir agua continuamente. Es ayudar a que la piel vuelva a retener la que ya recibe."</div></div>
+  <div class="cab-foot">La hidratación no es lo que entra. Es lo que la piel consigue conservar.</div>
+</div>
+
+<!-- FRASES -->
+<div class="frase-section">
+  <div class="frase-title">Frase de presentación del protocolo — adaptar según el problema detectado</div>
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 01 — Barrera lipídica debilitada</div>
+      <div class="frase-card-when">Usar cuando: piel tirante · sequedad constante · maquillaje que se cuartea</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel está en un estado de <span class="frase-var">barrera lipídica debilitada — la piel pierde agua más rápido de lo que puede conservarla y depende constantemente de productos externos</span>. Vamos a activar el protocolo HYDRO MEMORY PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">restaurar la barrera cutánea y devolver a la piel su capacidad de retener agua de forma autónoma</span>."</div>
+    </div>
+  </div>
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 02 — pH alterado que bloquea la retención</div>
+      <div class="frase-card-when">Usar cuando: deshidratada a pesar de usar hidratantes · hidratación que dura pocas horas</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel está en un estado de <span class="frase-var">pH alterado que compromete los mecanismos naturales de retención hídrica — los captadores endógenos de agua no funcionan correctamente</span>. Vamos a activar el protocolo HYDRO MEMORY PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">restaurar el pH fisiológico que activa los mecanismos internos de retención — para que la piel retenga el agua que ya recibe</span>."</div>
+    </div>
+  </div>
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 03 — Distribución hídrica reducida</div>
+      <div class="frase-card-when">Usar cuando: piel sin luminosidad · textura apagada · falta de elasticidad</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel presenta <span class="frase-var">distribución hídrica reducida — el agua no se reparte de forma eficiente entre las capas cutáneas y algunas zonas quedan desabastecidas</span>. Vamos a activar el protocolo HYDRO MEMORY PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">mejorar la distribución interna del agua y recuperar la elasticidad y luminosidad que una hidratación uniforme produce</span>."</div>
+    </div>
+  </div>
+  <div class="frase-card">
+    <div class="frase-card-top">
+      <div class="frase-card-version">Versión 04 — Caso mixto</div>
+      <div class="frase-card-when">Usar cuando: los tres factores presentes simultáneamente</div>
+    </div>
+    <div class="frase-card-body">
+      <div class="frase-static">"Según tu análisis, tu piel presenta <span class="frase-var">un déficit de retención hídrica en múltiples niveles — barrera debilitada, pH alterado y distribución reducida actuando a la vez</span>. Vamos a activar el protocolo HYDRO MEMORY PROTOCOL™ dentro del sistema Yadala para <span class="frase-var">reactivar los tres mecanismos de retención hídrica simultáneamente y devolver a la piel su autonomía de hidratación</span>."</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">1</div><div class="block-title">Lo que te han contado sobre la hidratación</div></div>
+  <div class="block-body"><div class="myth-list">
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">Si bebo 2 litros de agua al día mi piel estará bien hidratada.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">Cuanta más crema hidratante use, mejor hidratada estará mi piel.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">La piel grasa no necesita hidratación — ya tiene suficiente grasa.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">Si siento la piel tirante es porque es seca, no deshidratada.</span></div>
+    <div class="myth-item"><span class="mx">✕</span><span class="mt">El ácido hialurónico en crema es suficiente para hidratar en profundidad.</span></div>
+  </div></div>
+</div>
+
+<!-- 2 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">2</div><div class="block-title">Lo que la mayoría de clientas siente</div></div>
+  <div class="block-body">
+    <div class="voice-grid">
+      <div class="vc">"Siento la piel tirante aunque use crema todos los días — no entiendo por qué."</div>
+      <div class="vc">"El maquillaje se cuartea y no se asienta bien aunque me hidrate antes."</div>
+      <div class="vc">"La piel está apagada al final del día aunque use sérum de ácido hialurónico."</div>
+      <div class="vc">"Tengo líneas finas que aparecen con el tiempo aunque beba mucha agua."</div>
+      <div class="vc">"La hidratación no me dura más de unas horas — necesito estar reaplicando constantemente."</div>
+      <div class="vc">"Noto que cuanto más me hidrato, más necesito hacerlo."</div>
+    </div>
+    <div class="emotion-row">
+      <span class="ec">Frustración con la dependencia de hidratantes</span><span class="ec">Tirantez incómoda constante</span><span class="ec">Dinero gastado sin resultado</span><span class="ec">Piel que nunca está bien</span>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">3</div><div class="block-title">Lo que realmente ocurre — la realidad biológica</div></div>
+  <div class="block-body"><div class="bio-grid">
+    <div class="bio-card"><div class="bio-num">01</div><div class="bio-label">Barrera lipídica debilitada</div><div class="bio-desc">La piel pierde agua más rápido de lo que puede conservarla. La pérdida transepidérmica de agua elevada hace que cualquier hidratación externa se evapore antes de que la piel pueda aprovecharla.</div></div>
+    <div class="bio-card"><div class="bio-num">02</div><div class="bio-label">pH alterado bloquea la retención</div><div class="bio-desc">Cuando el pH no es el correcto, los glicosaminoglicanos naturales — incluido el ácido hialurónico endógeno — no funcionan como captadores de agua. El problema no es la cantidad que entra — es que el mecanismo que la retiene no funciona.</div></div>
+    <div class="bio-card"><div class="bio-num">03</div><div class="bio-label">Distribución hídrica reducida</div><div class="bio-desc">El agua no se reparte de forma eficiente entre las capas cutáneas. Algunas zonas quedan desabastecidas aunque otras estén hidratadas. Piel apagada y sin elasticidad aunque se hidrate regularmente.</div></div>
+  </div></div>
+</div>
+
+<!-- 4 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">4</div><div class="block-title">Por qué la deshidratación persiste aunque se hidrate</div></div>
+  <div class="block-body">
+    <div class="cycle-box">El ácido hialurónico externo hidrata la superficie — pero si el pH está alterado, los mecanismos internos de retención no funcionan. <strong>La piel depende de la crema porque ha perdido su capacidad de retener agua de forma autónoma.</strong> Cuanto más se hidrata externamente, menos necesidad tiene la piel de recuperar su función propia.</div>
+    <div class="flow">
+      <div class="flow-step"><div class="fl">Lo que ves</div><div class="ft">Tirantez · apagada · hidratación que no dura</div></div>
+      <div class="flow-step"><div class="fl">Lo que lo provoca</div><div class="ft">Barrera + pH + distribución reducida</div></div>
+      <div class="flow-step"><div class="fl">Por qué persiste</div><div class="ft">Se añade agua · no se repara el mecanismo</div></div>
+      <div class="flow-step"><div class="fl">La solución</div><div class="ft">Reactivar la memoria biológica de hidratación</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIFERENCIA -->
+<div class="dif-box">
+  <div class="dif-head"><div class="dif-head-title">LA DIFERENCIA</div><div class="dif-head-sub">No añadimos más agua. HYDRO MEMORY PROTOCOL™ reactiva la capacidad de retenerla.</div></div>
+  <table class="dif-table">
+    <thead><tr><th>Hidratación prestada</th><th>HYDRO MEMORY PROTOCOL™</th></tr></thead>
+    <tbody>
+      <tr><td>Aportan agua desde fuera</td><td>Reactivan la capacidad de retenerla</td></tr>
+      <tr><td>La hidratación dura unas horas</td><td>La hidratación dura más allá de la sesión</td></tr>
+      <tr><td>La piel se vuelve más dependiente</td><td>La piel recupera autonomía hídrica progresiva</td></tr>
+      <tr><td>Hidratación prestada permanente</td><td>Hidratación propia que se consolida</td></tr>
+    </tbody>
+  </table>
+  <div class="dif-frase">"La hidratación no es lo que entra. Es lo que la piel consigue conservar."</div>
+</div>
+
+<!-- 5 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">5</div><div class="block-title">Cómo actúa HYDRO MEMORY PROTOCOL™</div></div>
+  <div class="block-body">
+    <div class="mech-card"><div class="mech-top">Sobre la barrera lipídica</div><div class="mech-body">La restauración del pH fisiológico cohesiona el estrato córneo. La barrera se sella progresivamente, la pérdida transepidérmica de agua se reduce y la hidratación puede conservarse. La piel deja de evaporar lo que recibe.</div></div>
+    <div class="mech-card"><div class="mech-top">Sobre el pH y los mecanismos de retención</div><div class="mech-body">La restauración del pH fisiológico activa los glicosaminoglicanos naturales. El ácido hialurónico endógeno vuelve a funcionar como captor de agua. La piel aprende a retener lo que ya recibe — sin depender de lo que se le aporta desde fuera.</div></div>
+    <div class="mech-card"><div class="mech-top">Sobre la distribución hídrica</div><div class="mech-body">La activación circulatoria del protocolo mejora la distribución interna del agua entre capas cutáneas. El tejido recibe y distribuye mejor. La hidratación llega donde la piel la necesita.</div></div>
+    <div class="resultados-box">
+      <div class="resultados-title">Resultados clave</div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Piel más elástica y menos tirante — la hidratación dura más horas.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Hidratación que dura más allá de la sesión — menos dependencia de productos.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Menos líneas de deshidratación superficial visibles.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Maquillaje que se asienta de forma más homogénea.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Glow observable en cabina — tono más vivo y uniforme.</div></div>
+      <div class="r-item"><div class="r-dot"></div><div class="r-text">Mejora verificable en UV Hidratación en el siguiente escaneo.</div></div>
+    </div>
+    <div class="dont-box">
+      <div class="dont-title">No decir nunca — límites del claim</div>
+      <div class="dont-item">"Hidrata como el ácido hialurónico." — Es un mecanismo distinto — endógeno, no externo.</div>
+      <div class="dont-item">"Elimina la sequedad permanentemente." — Restaura el mecanismo, requiere continuidad.</div>
+      <div class="dont-item">"Restaura las acuaporinas." — Decir: mejora la distribución hídrica celular progresivamente.</div>
+      <div class="dont-item">"Sustituye a la crema hidratante." — La complementa restaurando lo que la crema no puede.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">6</div><div class="block-title">Beneficios visibles — lo que la clienta nota y el analizador confirma</div></div>
+  <div class="block-body"><div class="benefit-grid">
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Piel más elástica y flexible desde las primeras sesiones</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Hidratación que dura más allá del tratamiento</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Menos líneas de deshidratación visibles</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Maquillaje que se asienta de forma más homogénea</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Tono más luminoso y vivo — glow observable en cabina</div></div>
+    <div class="benefit-item"><div class="bdot"></div><div class="btext">Mejora verificable en UV Hidratación en el siguiente escaneo</div></div>
+  </div></div>
+</div>
+
+<div class="footer">HYDRO MEMORY PROTOCOL™ · Yadala · Junio 2026</div>
+</body>
+</html>
