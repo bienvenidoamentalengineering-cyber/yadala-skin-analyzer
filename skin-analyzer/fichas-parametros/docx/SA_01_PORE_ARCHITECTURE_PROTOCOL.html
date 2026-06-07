@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PORE ARCHITECTURE PROTOCOL™ — Yadala</title>
+<style>
+  :root {
+    --brown: #3E2F2B;
+    --gold: #C6A56B;
+    --cream: #F5EFE6;
+    --cream-light: #FAF6F1;
+    --text: #2A2A2A;
+    --text-soft: #555555;
+    --border: #E0DDD8;
+    --red-bg: #FCEBEB;
+    --red-text: #791F1F;
+    --blue-bg: #E6F1FB;
+    --blue-text: #0C447C;
+    --green-bg: #EAF3DE;
+    --green-text: #27500A;
+    --amber-bg: #FAEEDA;
+    --amber-text: #633806;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; font-size: 14px; color: var(--text); background: #fff; max-width: 900px; margin: 0 auto; padding: 40px 32px; }
+
+  /* HERO */
+  .hero { border-left: 6px solid var(--brown); padding: 28px 32px; margin-bottom: 24px; background: var(--cream-light); border-radius: 0 8px 8px 0; }
+  .hero-tag { font-size: 11px; font-weight: bold; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .product-name { font-size: 24px; font-weight: bold; color: var(--brown); margin-bottom: 4px; }
+  .product-sub { font-size: 13px; color: var(--gold); font-style: italic; margin-bottom: 2px; }
+  .hero-divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .hero-title { font-size: 30px; font-weight: bold; color: var(--text); line-height: 1.15; margin-bottom: 6px; }
+  .hero-title .accent { color: var(--brown); }
+  .hero-sub { font-size: 13px; color: var(--text-soft); font-style: italic; margin-bottom: 16px; }
+  .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { font-size: 11px; font-weight: bold; padding: 3px 12px; border-radius: 20px; }
+  .badge-prev { background: var(--blue-bg); color: var(--blue-text); }
+  .badge-rec { background: var(--green-bg); color: var(--green-text); }
+  .badge-param { background: #f0ede8; color: #888; border: 1px solid var(--border); }
+
+  /* CABINA */
+  .cabina { margin-bottom: 24px; border-radius: 8px; overflow: hidden; }
+  .cabina-top { background: var(--brown); padding: 10px 20px; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); }
+  .cabina-body { background: #2C1F1B; padding: 20px; border-bottom: 3px solid var(--gold); }
+  .cabina-quote { font-size: 15px; color: #F5EFE6; line-height: 1.7; font-style: italic; }
+  .cabina-footer { background: var(--brown); padding: 10px 20px; font-size: 12px; color: var(--gold); }
+
+  /* BLOCKS */
+  .block { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; overflow: hidden; }
+  .block-head { display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-bottom: 1px solid var(--border); background: #faf9f7; }
+  .block-num { width: 24px; height: 24px; border-radius: 50%; background: var(--brown); color: var(--cream); font-size: 11px; font-weight: bold; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .block-title { font-size: 13px; font-weight: bold; color: var(--brown); }
+  .block-body { padding: 16px 18px; }
+
+  /* MITOS */
+  .myth-list { display: flex; flex-direction: column; gap: 8px; }
+  .myth-item { display: flex; gap: 10px; align-items: flex-start; padding: 9px 12px; background: #faf9f7; border-radius: 6px; }
+  .myth-x { color: #A32D2D; font-weight: bold; font-size: 13px; flex-shrink: 0; }
+  .myth-text { font-size: 13px; color: var(--text-soft); line-height: 1.4; }
+
+  /* VOCES */
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .voice-card { padding: 10px 12px; background: #faf9f7; border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; font-size: 12px; color: var(--text-soft); font-style: italic; line-height: 1.5; }
+  .emotion-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .emotion-chip { font-size: 11px; font-weight: bold; padding: 3px 10px; border-radius: 20px; background: var(--amber-bg); color: var(--amber-text); border: 1px solid #EF9F27; }
+
+  /* BIO GRID */
+  .bio-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .bio-card { padding: 14px; background: var(--cream-light); border-radius: 6px; }
+  .bio-num { font-size: 22px; font-weight: bold; color: var(--gold); margin-bottom: 6px; }
+  .bio-label { font-size: 12px; font-weight: bold; color: var(--brown); margin-bottom: 4px; }
+  .bio-desc { font-size: 11px; color: var(--text-soft); line-height: 1.45; }
+
+  /* CICLO */
+  .cycle-box { background: var(--cream-light); border-left: 4px solid var(--gold); padding: 14px 16px; border-radius: 0 6px 6px 0; font-size: 13px; color: var(--text-soft); line-height: 1.65; margin-bottom: 12px; }
+  .cycle-box strong { color: var(--text); }
+  .flow { display: grid; grid-template-columns: repeat(4,1fr); border-radius: 6px; overflow: hidden; }
+  .flow-step { padding: 12px 8px; background: #f5f5f3; text-align: center; }
+  .flow-step:last-child { background: var(--brown); }
+  .flow-label { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: .05em; color: var(--gold); margin-bottom: 4px; }
+  .flow-text { font-size: 11px; color: var(--text-soft); line-height: 1.3; }
+  .flow-step:last-child .flow-text { color: var(--cream); }
+
+  /* DIFERENCIA */
+  .dif-box { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .dif-header { background: var(--brown); padding: 14px 18px; text-align: center; }
+  .dif-header-title { font-size: 15px; font-weight: bold; color: #F5EFE6; letter-spacing: .05em; }
+  .dif-header-sub { font-size: 12px; color: var(--gold); margin-top: 4px; font-style: italic; }
+  .dif-table { width: 100%; border-collapse: collapse; }
+  .dif-table th { font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: .05em; padding: 10px 16px; text-align: left; }
+  .dif-table th:first-child { background: #f5f5f3; color: #888; }
+  .dif-table th:last-child { background: var(--cream); color: var(--brown); }
+  .dif-table td { font-size: 12px; padding: 10px 16px; border-top: 1px solid var(--border); vertical-align: top; }
+  .dif-table td:first-child { color: var(--text-soft); }
+  .dif-table td:last-child { color: var(--brown); font-weight: bold; }
+  .dif-frase { padding: 14px 18px; background: var(--cream); text-align: center; border-top: 1px solid var(--gold); font-size: 13px; color: var(--brown); font-weight: bold; font-style: italic; }
+
+  /* MECANISMOS */
+  .mech-card { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 10px; }
+  .mech-top { padding: 10px 14px; background: #f5f5f3; font-size: 12px; font-weight: bold; color: var(--brown); }
+  .mech-body { padding: 10px 14px; font-size: 12px; color: var(--text-soft); line-height: 1.5; border-top: 1px solid var(--border); }
+  .result-row { display: flex; gap: 8px; align-items: flex-start; margin-top: 8px; padding: 8px 10px; background: var(--cream); border-radius: 4px; }
+  .result-label { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); white-space: nowrap; flex-shrink: 0; margin-top: 1px; }
+  .result-text { font-size: 12px; color: var(--brown); font-weight: bold; line-height: 1.4; }
+
+  /* NO DECIR */
+  .dont-box { margin-top: 12px; padding: 12px 14px; border: 1px solid #F7C1C1; background: var(--red-bg); border-radius: 6px; }
+  .dont-title { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: .05em; color: #A32D2D; margin-bottom: 6px; }
+  .dont-item { font-size: 12px; color: var(--red-text); line-height: 1.6; padding-left: 14px; position: relative; }
+  .dont-item::before { content: '✕'; position: absolute; left: 0; font-size: 10px; }
+
+  /* BENEFICIOS */
+  .benefit-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; }
+  .benefit-item { display: flex; gap: 8px; align-items: flex-start; padding: 9px 12px; background: #faf9f7; border-radius: 6px; }
+  .benefit-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 3px; }
+  .benefit-text { font-size: 12px; color: var(--text-soft); line-height: 1.4; }
+
+  /* FOOTER */
+  .footer { margin-top: 32px; text-align: center; font-size: 11px; color: #bbb; padding-top: 16px; border-top: 1px solid var(--border); }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  .section-label { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: .06em; color: #aaa; margin-bottom: 8px; }
+
+  @media print {
+    body { padding: 20px; }
+    .cabina { break-inside: avoid; }
+    .block { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Ficha de parámetro · Zemits VeraFace · RGB Pore</div>
+  <div class="product-name">PORE ARCHITECTURE PROTOCOL™</div>
+  <div class="product-sub">Reequilibrio del entorno biológico folicular.</div>
+  <div class="product-sub">Restauración de la arquitectura que regula la expresión visible del poro.</div>
+  <div class="hero-divider"></div>
+  <div class="hero-title">TU PIEL NO ESTÁ SUCIA.<br><span class="accent">ESTÁ DESREGULADA.</span></div>
+  <div class="hero-sub">Y eso tiene solución sin agredirla.</div>
+  <div class="badges">
+    <span class="badge badge-prev">PREVENT</span>
+    <span class="badge badge-rec">RECOVER</span>
+    <span class="badge badge-param">Poros &gt;0,02–0,05 mm · Rojo = grave · Morado = dilatado</span>
+  </div>
+</div>
+
+<!-- CABINA -->
+<div class="cabina">
+  <div class="cabina-top">Frase de cabina — usa con el informe en la mano</div>
+  <div class="cabina-body">
+    <div class="cabina-quote">"Lo que ves aquí no es suciedad. Es sebo oxidado, tejido que ha perdido firmeza e inflamación que nadie había tratado. Los strips los arrancan por un momento. Yadala trabaja sobre el motivo por el que vuelven. Esa es la diferencia entre atacar lo que ves y actuar sobre lo que lo provoca."</div>
+  </div>
+  <div class="cabina-footer">El problema no es lo que ves. El problema es por qué vuelve.</div>
+</div>
+
+<!-- 1 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">1</div><div class="block-title">Lo que te han contado sobre los poros</div></div>
+  <div class="block-body">
+    <div class="myth-list">
+      <div class="myth-item"><span class="myth-x">✕</span><span class="myth-text">Los poros se pueden cerrar de forma permanente con el producto correcto.</span></div>
+      <div class="myth-item"><span class="myth-x">✕</span><span class="myth-text">Los puntos negros son suciedad — si me limpiara mejor, no los tendría.</span></div>
+      <div class="myth-item"><span class="myth-x">✕</span><span class="myth-text">Los strips de poros y las máscaras de carbón eliminan el problema de raíz.</span></div>
+      <div class="myth-item"><span class="myth-x">✕</span><span class="myth-text">El agua caliente abre los poros y el agua fría los cierra — así se limpian bien.</span></div>
+      <div class="myth-item"><span class="myth-x">✕</span><span class="myth-text">Si los exprimo los elimino. Si no los exprimo, el sebo se acumula para siempre.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">2</div><div class="block-title">Lo que la mayoría de clientas siente</div></div>
+  <div class="block-body">
+    <div class="voice-grid">
+      <div class="voice-card">"Los puntos negros de la nariz me vuelven loca, siempre están ahí."</div>
+      <div class="voice-card">"He probado strips, máscaras de carbón... y a los dos días vuelven."</div>
+      <div class="voice-card">"Cuando me maquillo, la base se acumula en los poros y se ve peor."</div>
+      <div class="voice-card">"Tengo la nariz brillante a las dos horas aunque me ponga polvos."</div>
+      <div class="voice-card">"Los poros de la nariz se me ven tanto que parecen cráteres."</div>
+      <div class="voice-card">"He usado mil productos para los puntos negros y ninguno funciona de verdad."</div>
+    </div>
+    <div class="emotion-row">
+      <span class="emotion-chip">Vergüenza</span>
+      <span class="emotion-chip">Frustración acumulada</span>
+      <span class="emotion-chip">Complejo sin filtros</span>
+      <span class="emotion-chip">Dinero gastado sin resultado</span>
+      <span class="emotion-chip">Miedo a empeorar</span>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">3</div><div class="block-title">Lo que realmente ocurre — la realidad biológica</div></div>
+  <div class="block-body">
+    <div class="bio-grid">
+      <div class="bio-card"><div class="bio-num">01</div><div class="bio-label">Sebo oxidado</div><div class="bio-desc">El canal folicular se obstruye con sebo que se oxida en contacto con el aire. No es suciedad externa — es una disfunción del equilibrio sebáceo de la piel.</div></div>
+      <div class="bio-card"><div class="bio-num">02</div><div class="bio-label">Pérdida de soporte</div><div class="bio-desc">El tejido que rodea el poro pierde firmeza con el tiempo. Sin esa estructura de soporte, el poro parece más grande visualmente aunque no haya crecido en tamaño.</div></div>
+      <div class="bio-card"><div class="bio-num">03</div><div class="bio-label">Inflamación silenciosa</div><div class="bio-desc">Una inflamación de bajo grado, invisible pero constante, distorsiona la arquitectura del folículo y amplía la apertura desde dentro. No duele — pero se ve.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">4</div><div class="block-title">Por qué el problema vuelve siempre</div></div>
+  <div class="block-body">
+    <div class="cycle-box">Los strips extraen el sebo en superficie — pero <strong>no regulan por qué se forma</strong>. Los ácidos agresivos eliminan estrato córneo, pero <strong>rompen la barrera cutánea</strong> y la piel produce más sebo para compensar. El poro vuelve porque <strong>nadie ha actuado sobre los tres mecanismos a la vez</strong>: el sebo, el soporte del tejido perfolicular y la inflamación que deforma el folículo desde dentro.</div>
+    <div class="flow">
+      <div class="flow-step"><div class="flow-label">Lo que ves</div><div class="flow-text">Poro visible · punto negro</div></div>
+      <div class="flow-step"><div class="flow-label">Lo que lo provoca</div><div class="flow-text">Sebo + tejido + inflamación</div></div>
+      <div class="flow-step"><div class="flow-label">Por qué vuelve</div><div class="flow-text">Solo se trató la superficie</div></div>
+      <div class="flow-step"><div class="flow-label">La solución</div><div class="flow-text">Actuar sobre la causa</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIFERENCIA -->
+<div class="dif-box">
+  <div class="dif-header">
+    <div class="dif-header-title">LA DIFERENCIA</div>
+    <div class="dif-header-sub">Otros tratamientos eliminan temporalmente lo que ves. Yadala trabaja sobre el motivo por el que vuelve.</div>
+  </div>
+  <table class="dif-table">
+    <thead><tr><th>Otros tratamientos</th><th>PORE ARCHITECTURE PROTOCOL™</th></tr></thead>
+    <tbody>
+      <tr><td>Eliminan el sebo visible en superficie</td><td>Regula por qué se acumula</td></tr>
+      <tr><td>Extraen el punto negro</td><td>Reequilibra el entorno del folículo</td></tr>
+      <tr><td>Actúan sobre el síntoma</td><td>Actúa sobre la causa biológica</td></tr>
+      <tr><td>Resultado temporal — vuelven a los 2 días</td><td>Mejora progresiva y sostenida</td></tr>
+    </tbody>
+  </table>
+  <div class="dif-frase">"El problema no es lo que ves. El problema es por qué vuelve."</div>
+</div>
+
+<!-- 5 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">5</div><div class="block-title">Cómo actúa PORE ARCHITECTURE PROTOCOL™ — tres mecanismos, tres resultados visibles</div></div>
+  <div class="block-body">
+    <div class="mech-card">
+      <div class="mech-top">Sobre el sebo</div>
+      <div class="mech-body">Cuando la barrera cutánea recupera su equilibrio fisiológico, disminuye la tendencia de la piel a compensar con exceso de grasa. La glándula sebácea regula — no se seca, no se agrede, se reequilibra.
+        <div class="result-row"><span class="result-label">Resultado visible</span><span class="result-text">Menos brillo durante el día · Menos formación de nuevos puntos negros · Piel que no necesita matificarse constantemente.</span></div>
+      </div>
+    </div>
+    <div class="mech-card">
+      <div class="mech-top">Sobre el tejido perfolicular</div>
+      <div class="mech-body">El efecto tensor del protocolo favorece un entorno biológico que apoya la firmeza del tejido que rodea el poro. Cuando ese tejido recupera tono, el poro se ve visualmente más fino.
+        <div class="result-row"><span class="result-label">Resultado visible</span><span class="result-text">Textura más uniforme y refinada · El maquillaje se asienta de forma más homogénea · Poros menos aparentes sin extractores.</span></div>
+      </div>
+    </div>
+    <div class="mech-card">
+      <div class="mech-top">Sobre la inflamación silenciosa</div>
+      <div class="mech-body">La acción calmante y el equilibrio del entorno bacteriano contribuyen a reducir la inflamación crónica de bajo grado. El folículo deja de estar bajo presión constante — y el poro deja de ampliarse.
+        <div class="result-row"><span class="result-label">Resultado visible</span><span class="result-text">Menos congestión zonal · Apariencia más refinada y uniforme · Piel que responde mejor a los siguientes protocolos.</span></div>
+      </div>
+    </div>
+    <div class="dont-box">
+      <div class="dont-title">No decir nunca — límites del claim</div>
+      <div class="dont-item">"Cierra los poros permanentemente." — El tamaño del poro es anatómico.</div>
+      <div class="dont-item">"Elimina los puntos negros de forma definitiva." — Los controla progresivamente.</div>
+      <div class="dont-item">"Seca el exceso de grasa." — Regula, no seca. Secar genera rebote sebáceo.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="block">
+  <div class="block-head"><div class="block-num">6</div><div class="block-title">Beneficios visibles — lo que la clienta nota y el analizador confirma</div></div>
+  <div class="block-body">
+    <div class="benefit-grid">
+      <div class="benefit-item"><div class="benefit-dot"></div><div class="benefit-text">Poros visualmente más finos desde la 1ª sesión</div></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div class="benefit-text">Limpieza profunda sin resecar ni irritar</div></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div class="benefit-text">Reducción progresiva de puntos negros</div></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div class="benefit-text">Menos brillo en zona T durante el día</div></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div class="benefit-text">Textura más uniforme y maquillaje más homogéneo</div></div>
+      <div class="benefit-item"><div class="benefit-dot"></div><div class="benefit-text">Mejora verificable en RGB Pore en el siguiente escaneo</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">PORE ARCHITECTURE PROTOCOL™ · Yadala · Junio 2026</div>
+
+</body>
+</html>
