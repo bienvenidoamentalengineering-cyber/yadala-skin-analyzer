@@ -22,13 +22,13 @@ Los tres principios activos de Yadala se nombran con doble nomenclatura: nombre 
 
 | Código | Nombre funcional de marca | Origen | Solubilidad |
 |--------|--------------------------|--------|-------------|
-| Ingrediente A | Extractos vegetales naturales — Bioestimulantes antioxidantes y activadores bioenergéticos | Vegetal | Soluble en agua |
-| Ingrediente B | Fusión de elementos naturales — Purificadores dérmicos y reguladores del manto ácido | Mineral/vegetal | Soluble en agua |
-| Ingrediente C | Extractos minerales naturales — Tensores dérmicos y moduladores de la respuesta celular | Mineral (sal cristalina natural) | Soluble en agua |
+| Ingredientes A | Extractos vegetales naturales — Bioestimulantes antioxidantes y activadores bioenergéticos | Vegetal | Soluble en agua |
+| Ingredientes B | Fusión de elementos naturales — Purificadores dérmicos y reguladores del manto ácido | Mineral/vegetal | Soluble en agua |
+| Ingredientes C | Extractos minerales naturales — Tensores dérmicos y moduladores de la respuesta celular | Mineral (sal cristalina natural) | Soluble en agua |
 
 ---
 
-## INGREDIENTE A — EXTRACTOS VEGETALES NATURALES
+## INGREDIENTES A — EXTRACTOS VEGETALES NATURALES
 *Bioestimulantes antioxidantes y activadores bioenergéticos*
 
 ### Propiedades científicas
@@ -76,7 +76,7 @@ Al activar la actividad mitocondrial, genera el entorno energético necesario pa
 
 ---
 
-## INGREDIENTE B — FUSIÓN DE ELEMENTOS NATURALES
+## INGREDIENTES B — FUSIÓN DE ELEMENTOS NATURALES
 *Purificadores dérmicos y reguladores del manto ácido y seborreductores*
 
 ### Propiedades científicas
@@ -126,7 +126,7 @@ Restablece el "entorno donde las células pueden trabajar". Sin un pH equilibrad
 
 ---
 
-## INGREDIENTE C — EXTRACTOS MINERALES NATURALES
+## INGREDIENTES C — EXTRACTOS MINERALES NATURALES
 *Tensores dérmicos y moduladores-equilibrantes de la respuesta celular*
 
 ### Propiedades científicas
